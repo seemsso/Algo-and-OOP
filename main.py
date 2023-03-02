@@ -1,12 +1,7 @@
-# a = 'memes'
-# print(a.find('k')) => -1
-# print(a.replace('e', 'ke')) => mkemkes
-# print(a) => memes
-# print(a.split('e')) => ['m', 'm', 's']
-# print(a.rstrip('s')) => meme
+""" REPEAT PYTHON BASE WITH MARK LUTZ BOOK """
 
 
-# 5.INT/FLOAT
+""" INT/FLOAT """
 # import math
 # a = 5.5
 # b = 6.1
@@ -36,7 +31,8 @@
 # print(a)
 
 
-# 6.DYNAMIC TYPES
+""" 6.DYNAMIC TYPES """
+
 # a = [1, 2, 3]
 # b = a[:]
 # c = a
@@ -51,7 +47,7 @@
 # print(sys.getrefcount(5.5)) СЧЕТЧИК ИСПОЛЬЗОВАНИЯ КЕШИРУЕМОГО ОБЪЕКТА
 
 
-# 7.STR
+""" 7.STR """
 
 # a = '123'
 # a = a[::2]
@@ -67,7 +63,7 @@
 # print(a[:1])
 
 
-# 8. LIST
+""" LIST """
 
 # x = {'a': 1, 'b': 2, 'c': 3}
 # y = {'d': [1, 2, 3]}
@@ -81,28 +77,7 @@
 
 # print(x.update(y))
 
-# 12.IF/ELSE
-# ПРОВЕРКА СЛОВАРЕМ
-# a = {
-#     'ципа': 1,
-#     'кура': 2,
-#     'говядина': 3,
-#     'свинина': 4,
-#     '': 'в наличии нет'
-# }
-# print(a[input()])
-
-# s = ('a'
-# 'bb'
-# 'cccc'
-# )
-# print(s) => 'abbcccc' конкатенация неявная
-
-# x = 0
-# y = 1
-# print(x and y)
-
-# 13.WHILE/FOR
+""" WHILE/FOR """
 
 # x = 'kekl'
 # while x:
@@ -118,11 +93,14 @@
 
 # a = [('name', 'city',), ('age', 'orders')]
 
-# В РАБОТЕ С БД
+""" IN DATA BASE """
+
 # for i, j in a:
 #     print(i, j)
 
-# ПОСИМВОЛЬНОЕ ЧТЕНИЕ ФАЙЛА
+
+""" FILE READING """
+
 # file = open('C:\\Users\\Вадим\\Desktop\\testpy.txt')
 # while True:
 #     char = file.read(1)
@@ -130,7 +108,7 @@
 #         break
 #     print(char)
 
-# ПОСТРОЧНОЕ ЧТЕНИЕ ФАЙЛА(ЛУЧШИЙ ВАРИАНТ)
+
 # for line in open('C:\\Users\\Вадим\\Desktop\\testpy.txt'):
 #     print(line.rstrip())
 
@@ -159,7 +137,7 @@
 #     L[i] += 1
 # print(id(L))
 
-# ZIP/MAP
+""" ZIP/MAP """
 # L1 = [1, 2, 3]
 # L2 = [4, 5, 6]
 #
@@ -184,7 +162,7 @@
 # print(next(a))
 
 
-# 16.FUNCTIONS
+""" FUNCTIONS """
 
 # def func1(prm1, prm2):
 #     result = []
@@ -206,10 +184,9 @@
 #
 #     return action
 #
-# a = maker(7) => здесь сохранили параметр для внешней функции
-# print(a(5)) => здесь передали параметр для внутренней функции,
-# на которую ссылается наша внешняя функция с
-# уже переданным параметром
+# a = maker(7)
+# print(a(5))
+
 
 # def func1(a):
 #     return lambda b: b * a
@@ -239,7 +216,7 @@
 #     return nested
 
 
-# 18.Аргументы
+""" FUNC PRMS/ARGUMENTS """
 
 # def func1(a):
 #     a[0] = [1, 2]
@@ -274,7 +251,7 @@
 # print(type((1, 2)))
 
 
-# 19.РЕКУРСИЯ И LAMBDA
+""" RECURSION AND LAMBDA FUNCS """
 
 # def mysum(L):
 #     if not L:

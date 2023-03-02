@@ -1,3 +1,5 @@
+""""FIRST STEPS WITH CLASSES AND OOP ON PYTHON """
+
 # class Mem:
 #
 #     """Documentation"""
@@ -45,6 +47,7 @@
 #
 # print(hasattr(Person, 'job'))
 
+""" CLASS METHODS TRAINING """
 
 # class MediaPlayer():
 #
@@ -87,25 +90,25 @@
 import sys
 
 
-class StreamData():
-
-    def create(self, fields, lst_values):
-        if len(fields) == len(lst_values):
-            self.__dict__ = dict(zip(fields, lst_values))
-        return bool(self.__dict__)
-
-
-class StreamReader:
-    FIELDS = ('id', 'title', 'pages')
-
-    def readlines(self):
-        lst_in = [1, 2, 3]
-        sd = StreamData()
-        res = sd.create(self.FIELDS, lst_in)
-        return sd, res
-
-sr = StreamReader()
-data, result = sr.readlines()
-
-print(result)
-print(data.__dict__)
+# class StreamData():
+#
+#     def create(self, fields, lst_values):
+#         if len(fields) == len(lst_values):
+#             self.__dict__ = dict(zip(fields, lst_values))
+#         return bool(self.__dict__)
+#
+#
+# class StreamReader:
+#     FIELDS = ('id', 'title', 'pages')
+#
+#     def readlines(self):
+#         lst_in = [1, 2, 3]
+#         sd = StreamData()
+#         res = sd.create(self.FIELDS, lst_in)
+#         return sd, res
+#
+# sr = StreamReader()
+# data, result = sr.readlines()
+#
+# print(result)
+# print(data.__dict__)
