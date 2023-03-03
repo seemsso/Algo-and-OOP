@@ -162,6 +162,71 @@
 # print(next(a))
 
 
+
+
+# Sample Input:
+#
+# 10 5 4 -3 2 0 5 10 3
+# Sample Output:
+#
+# 10 5 4 3
+
+# a = list(map(int, input().split()))
+# b = list(set(a))
+# a = sorted(b, reverse=True)[:4]
+#
+# print(*a)
+
+
+# Sample Input:
+#
+# 7 6 4 2 6 7 9 10 4
+# -4 5 10 4 5 65
+# Sample Output:
+#
+# 67 14 9 11 10 3
+
+
+# a = sorted(list(map(int, input().split())))
+# b = sorted(list(map(int, input().split())), reverse=True)
+#
+# c = [i + j for (i,j) in zip(a, b)]
+# print(*c)
+
+
+
+# Sample Input:
+#
+# смартфон:120000
+# яблоко:2
+# сумка:560
+# брюки:2500
+# линейка:10
+# бумага:500
+# Sample Output:
+#
+# яблоко линейка бумага
+
+
+
+# import sys
+#
+# lst_in = list(map(str.strip, sys.stdin.readlines()))
+#
+# lst_in1 = [i.split(":") for i in lst_in]
+#
+# d = {int(v): k for k, v in lst_in1}
+#
+#
+# def check3_lower(dct):
+#     dct = sorted(dct.items())
+#     lst = [dct[i][1] for i in range(3)]
+#     return lst
+#
+#
+# res = check3_lower(d)
+# print(*res)
+
 """ FUNCTIONS """
 
 # def func1(prm1, prm2):
