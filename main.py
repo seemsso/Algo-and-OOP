@@ -382,3 +382,23 @@
 # a_filter = list(filter(str, a))
 # a_reduce = functools.reduce((lambda x, y: x + y), a)
 # print(a, a_map, a_filter, a_reduce, sep="\n")
+
+
+# import sys
+# import random
+#
+# random.seed(1)
+#
+# lst_in = list(map(str.strip, sys.stdin.readlines()))
+#
+# lst = [[int(i) for i in x.split()] for x in lst_in]
+#
+# transform = list(map(list, zip(*lst)))
+#
+# random.shuffle(transform)
+#
+# lst_finish = list(map(list, zip(*transform)))
+# for i in lst_finish:
+#     print(*i)
+
+
