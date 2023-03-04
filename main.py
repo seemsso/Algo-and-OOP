@@ -372,3 +372,13 @@
 #     return tot
 #
 # print(sumtree(L))
+
+
+# FILTER AND REDUCE
+#
+# import functools
+# a = [1, 2, 3, 45, 90, 120, -121]
+# a_map = list(map((lambda x: x ** 2), a))
+# a_filter = list(filter(str, a))
+# a_reduce = functools.reduce((lambda x, y: x + y), a)
+# print(a, a_map, a_filter, a_reduce, sep="\n")
