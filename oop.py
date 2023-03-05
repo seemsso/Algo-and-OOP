@@ -157,3 +157,102 @@
 # db = DataBase()
 # db.insert(lst_in)
 # print(db.lst_data)
+
+
+# class Translator:
+#     a = []
+#     eng_words = []
+#
+#     def add(self, eng, rus):
+#         if eng in self.eng_words:
+#             self.a[self.eng_words.index[eng]] += (rus,)
+#         else:
+#             self.a.append((eng, rus))
+#             self.eng_words.append(eng)
+#
+#     def remove(self, eng):
+#         del self.a[self.eng_words.index[eng]]
+#
+#     def translate(self, eng):
+#         lst = [self.a[self.eng_words.index[eng]][:-1]]
+#         return lst
+#
+#
+# tr = Translator()
+# sdata = '''tree - дерево
+# car - машина
+# car - автомобиль
+# leaf - лист
+# river - река
+# go - идти
+# go - ехать
+# go - ходить
+# milk - молок'''
+# trans = [tr.add(eng, ru) for eng, ru in [d.split(' - ') for d in sdata.split('\n')]]
+#
+# print(trans)class Translator:
+#     a = []
+#     eng_words = []
+#
+#     def add(self, eng, rus):
+#         if eng in self.eng_words:
+#             self.a[self.eng_words.index[eng]] += (rus,)
+#         else:
+#             self.a.append((eng, rus))
+#             self.eng_words.append(eng)
+#
+#     def remove(self, eng):
+#         del self.a[self.eng_words.index[eng]]
+#
+#     def translate(self, eng):
+#         lst = [self.a[self.eng_words.index[eng]][:-1]]
+#         return lst
+#
+#
+# tr = Translator()
+# sdata = '''tree - дерево
+# car - машина
+# car - автомобиль
+# leaf - лист
+# river - река
+# go - идти
+# go - ехать
+# go - ходить
+# milk - молок'''
+# trans = [tr.add(eng, ru) for eng, ru in [d.split(' - ') for d in sdata.split('\n')]]
+#
+# print(trans)
+
+# class Translator:
+#     d = {}
+#
+#     def add(self, eng, rus):
+#         if eng not in self.d:
+#             self.d[eng] = []
+#             self.d[eng].append(rus)
+#         else:
+#             if rus not in self.d[eng]:
+#                 self.d[eng].append(rus)
+#
+#
+#     def remove(self, eng):
+#         del self.d[eng]
+#
+#     def translate(self, eng):
+#         return self.d[eng]
+#
+#
+# tr = Translator()
+# sdata = '''tree - дерево
+# car - машина
+# car - автомобиль
+# leaf - лист
+# river - река
+# go - идти
+# go - ехать
+# go - ходить
+# milk - молок'''
+# trans = [tr.add(eng, ru) for eng, ru in [d.split(' - ') for d in sdata.split('\n')]]
+# tr.remove('car')
+# tr.translate('go')
+# print(*tr.translate('go'))
