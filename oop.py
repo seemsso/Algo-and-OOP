@@ -112,3 +112,48 @@ import sys
 #
 # print(result)
 # print(data.__dict__)
+
+
+# lst_in = ['1 Сергей 35 120000', '2 Федор 23 12000', '3 Иван 13 1200']
+#
+# class DataBase:
+#     lst_data = []
+#     FIELDS = ('id', 'name', 'old', 'salary')
+#
+#     def insert(self, data):
+#         for i in data:
+#             for ind, val in enumerate(i.split(' ')):
+#                 self.lst_data.append({self.FIELDS[ind]: val})
+#
+#     def select(self, a, b):
+#         return self.lst_data[a: b + 1]
+#
+#
+#
+# db = DataBase()
+# db.insert(lst_in)
+# print(db.lst_data)
+
+
+
+import sys
+
+
+# lst_in = ['1 Сергей 35 120000', '2 Федор 23 12000', '3 Иван 13 1200']
+#
+#
+# class DataBase:
+#     lst_data = []
+#     FIELDS = ('id', 'name', 'old', 'salary')
+#
+#     def insert(self, data):
+#         for i in data:
+#             self.lst_data.append(dict(zip(self.FIELDS, i.split())))
+#
+#     def select(self, a, b):
+#         return self.lst_data[a: b + 1]
+#
+#
+# db = DataBase()
+# db.insert(lst_in)
+# print(db.lst_data)
