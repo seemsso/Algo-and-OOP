@@ -412,3 +412,12 @@
 # [] -table, () - str, in () values
 # list(map((lambda row: row[1]), listoftuple))
 
+
+
+# def ups(line):
+#     for sub in line.split(","):
+#         yield sub.lower()
+#
+# print(tuple(ups("ABC,DEF,GH"))) => ('abc', 'def', 'gh')
+# a = {i : s for i, s in enumerate(ups('AB,CD,EF'))}
+# print(a) => {0: 'ab', 1: 'cd', 2: 'ef'}
