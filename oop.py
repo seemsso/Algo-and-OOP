@@ -160,6 +160,9 @@
 
 
 
+
+
+
 # class Translator:
 #     d = {}
 #
@@ -193,3 +196,27 @@
 # tr.remove('car')
 # tr.translate('go')
 # print(*tr.translate('go'))
+
+
+""" __INIT__"""
+
+# class Money:
+#
+#     def __init__(self, x, y=0):
+#         self.money = x
+#
+#
+# my_money = Money(100)
+# your_money = Money(1000)
+
+
+# class Point:
+#
+#     def __init__(self, x=0, y=0, color="black"):
+#         self.x = x
+#         self.y = y
+#         self.color = color
+#
+#
+# points = [Point(y, y) for x, y in enumerate(range(2000), start=1) if y % 2 != 0]
+# points[1] = Point(3, 3, 'yellow')
