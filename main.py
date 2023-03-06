@@ -402,3 +402,13 @@
 #     print(*i)
 
 
+""" GENERATORS """
+
+
+# For files:
+# [line.rstrip for line in open("testpy.txt").readlines()] -without '\n'
+
+# listoftuple = [('bob', 35, 'mgr'), ('sue', 40, 'dev')]
+# [] -table, () - str, in () values
+# list(map((lambda row: row[1]), listoftuple))
+
