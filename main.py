@@ -421,3 +421,33 @@
 # print(tuple(ups("ABC,DEF,GH"))) => ('abc', 'def', 'gh')
 # a = {i : s for i, s in enumerate(ups('AB,CD,EF'))}
 # print(a) => {0: 'ab', 1: 'cd', 2: 'ef'}
+
+
+""" sorted(key=func) or sort(key=func) """
+
+# rivers = ['Лена', 'Енисей', 'Волга', 'Дон']
+#
+# rivers_len = sorted(rivers, key=len,reverse=True)
+# print(*rivers_len)
+
+
+
+# import sys
+#
+# lst_in = ['ножницы=100', 'котелок=500',
+#           'спички=20', 'зажигалка=40', 'зеркальце=50']
+#
+# dct = {x[0]: x[1] for x in [x.split("=") for x in lst_in]}
+# dct_sort = sorted(list(dct.items()), key=lambda x: int(x[1]), reverse=True)
+#
+# print(*[x[0] for x in dct_sort])
+
+
+# INDEX
+
+# notes = ['до', 'фа', 'соль', 'до', 'ре', 'фа', 'ля', 'си']
+#
+# orig = ['до', 'ре', 'ми', 'фа', 'соль', 'ля', 'си']
+# transform_notes = sorted(notes, key= lambda x: orig.index(x))
+# print(*transform_notes)
+
