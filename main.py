@@ -423,6 +423,15 @@
 # print(a) => {0: 'ab', 1: 'cd', 2: 'ef'}
 
 
+# a = (i ** 2 for i in [1, 2, 3, 4])
+# print(iter(a) is a)
+# b = iter(a)
+# print(next(b))
+#
+# c = iter(a)
+# print(next(c))
+
+
 """ sorted(key=func) or sort(key=func) """
 
 # rivers = ['Лена', 'Енисей', 'Волга', 'Дон']
