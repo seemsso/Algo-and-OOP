@@ -431,6 +431,20 @@
 # c = iter(a)
 # print(next(c))
 
+#saved position in yield
+# def func():
+#     yield from [1, 2, 3, 4]
+#
+# a = iter(func())
+# b = iter(func())
+# print(next(a))
+# print(next(b))
+# print(next(a))
+# print(next(b))
+
+
+
+
 
 """ sorted(key=func) or sort(key=func) """
 
