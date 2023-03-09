@@ -59,3 +59,27 @@
 #         return x * factorial(x - 1)
 #
 # print(factorial(7))
+
+
+# def count_elements(lst):
+#     if not lst:
+#         return 0
+#     return 1 + count_elements(lst[1:])
+#
+#
+#
+# a = [1, 2, 3, 7, 10]
+#
+# print(count_elements(a)) #3
+#
+#
+#
+# def sum_lst(lst):
+#     sum = 0
+#     for i in lst:
+#         if lst:
+#             sum += i
+#             i += sum_lst(lst[i:])
+#     return sum
+#
+# print(sum_lst(a))  #6
