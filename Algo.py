@@ -83,3 +83,19 @@
 #     return sum
 #
 # print(sum_lst(a))  #6
+
+
+""" QUICKSORT """
+
+def quicksort(arr):
+    if len(arr) < 2:
+        return arr
+    else:
+        main = arr[0]
+        low = [i for i in arr[1:] if i < main]
+        big = [i for i in arr[1:] if i > main]
+        return quicksort(low) + [main] + quicksort(big)
+
+
+lst = [3, -5, 100, 1, -10, 50, 14]
+print(quicksort(lst))
