@@ -46,3 +46,16 @@
 #
 # a = [1, 3, 2, 10, 25, 7]
 # print(sort_lst(a)) # =>  [1, 2, 3, 7, 10, 25]
+
+
+
+""" RECURSION with stack """
+
+
+# def factorial(x):
+#     if x == 1:
+#         return 1
+#     else:
+#         return x * factorial(x - 1)
+#
+# print(factorial(7))
