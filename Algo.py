@@ -119,17 +119,60 @@
 """ HASH TABLES """
 
 
-voted = {}
+# voted = {}
+#
+# #set realisation
+# def check_voter(name):
+#     if voted.get(name):
+#         print('already voted')
+#     else:
+#         voted[name] = True
+#         print('he can vote')
 
-#set realisation
-def check_voter(name):
-    if voted.get(name):
-        print('already voted')
-    else:
-        voted[name] = True
-        print('he can vote')
+# check_voter("Ivan") # => he can vote
+# check_voter("Petr") # => he can vote
+# check_voter("Nikolay") # => he can vote
+# check_voter("Ivan") # => already voted
 
-check_voter("Ivan") # => he can vote
-check_voter("Petr") # => he can vote
-check_voter("Nikolay") # => he can vote
-check_voter("Ivan") # => already voted
+
+"""  Breadth - First Search  """
+
+graph = {}
+graph["me"] = ['alice', 'bob', 'claire']
+graph["bob"] = ['ann', 'peggy']
+graph["alice"] = ["peggy"]
+graph["claire"] = ["thom", "jonny"]
+graph["anuj"] = []
+graph["peggy"] = []
+graph["thom"] = []
+graph["jonny"] = []
+
+print(graph)
+
+# queue in PY
+from collections import deque
+
+
+def search(name):
+    search_queue = deque()
+    search_queue += graph[name]
+    searched = []
+    while search_queue:
+        person = search_queue.popleft()
+        if not person in searched:
+            if seller(person):
+                print(f'It\'s {person}')
+                return True
+            else:
+                search_queue += graph[person]
+                searched.append(person)
+    return False
+
+
+def seller(name):
+    return name == "bob"
+
+
+print(search("me"))
+
+
