@@ -87,15 +87,49 @@
 
 """ QUICKSORT """
 
-def quicksort(arr):
-    if len(arr) < 2:
-        return arr
+# def quicksort(arr):
+#     if len(arr) < 2:
+#         return arr
+#     elif len(arr) == 2:
+#         if arr[0] > arr[1]:
+#             return arr
+#         else:
+#             return arr[1] + arr[0]
+#     else:
+#         main = arr[0]
+#         low = [i for i in arr[1:] if i < main]
+#         big = [i for i in arr[1:] if i > main]
+#         return quicksort(low) + [main] + quicksort(big)
+#
+#
+# lst = [3, -5, 100, 1, -10, 50, 14]
+# print(quicksort(lst))
+
+
+
+# def longest(a1, a2):
+#     a1 = set(a1)
+#     print(a2)
+#     a2 = set(a2)
+#     print(a2)
+#     res = a1 | a2
+#     return res
+
+
+""" HASH TABLES """
+
+
+voted = {}
+
+#set realisation
+def check_voter(name):
+    if voted.get(name):
+        print('already voted')
     else:
-        main = arr[0]
-        low = [i for i in arr[1:] if i < main]
-        big = [i for i in arr[1:] if i > main]
-        return quicksort(low) + [main] + quicksort(big)
+        voted[name] = True
+        print('he can vote')
 
-
-lst = [3, -5, 100, 1, -10, 50, 14]
-print(quicksort(lst))
+check_voter("Ivan") # => he can vote
+check_voter("Petr") # => he can vote
+check_voter("Nikolay") # => he can vote
+check_voter("Ivan") # => already voted
