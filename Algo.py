@@ -137,42 +137,71 @@
 
 """  Breadth - First Search  """
 
-graph = {}
-graph["me"] = ['alice', 'bob', 'claire']
-graph["bob"] = ['ann', 'peggy']
-graph["alice"] = ["peggy"]
-graph["claire"] = ["thom", "jonny"]
-graph["anuj"] = []
-graph["peggy"] = []
-graph["thom"] = []
-graph["jonny"] = []
+# graph = {}
+# graph["me"] = ['alice', 'bob', 'claire']
+# graph["bob"] = ['ann', 'peggy']
+# graph["alice"] = ["peggy"]
+# graph["claire"] = ["thom", "jonny"]
+# graph["anuj"] = []
+# graph["peggy"] = []
+# graph["thom"] = []
+# graph["jonny"] = []
+#
+# print(graph)
+#
+# # queue in PY
+# from collections import deque
+#
+#
+# def search(name):
+#     search_queue = deque()
+#     search_queue += graph[name]
+#     searched = []
+#     while search_queue:
+#         person = search_queue.popleft()
+#         if not person in searched:
+#             if seller(person):
+#                 print(f'It\'s {person}')
+#                 return True
+#             else:
+#                 search_queue += graph[person]
+#                 searched.append(person)
+#     return False
+#
+#
+# def seller(name):
+#     return name == "bob"
+#
+#
+# print(search("me"))
+
+
+""" Dijkstra algorithm """
+
+graph = dict()
+graph["start"] = dict()
+graph["start"]["a"] = 6
+graph["start"]["b"] = 2
+graph["a"] = dict()
+graph["a"]["final"] = 1
+graph["b"] = dict()
+graph["b"]["a"] = 3
+graph["b"]["final"] = 5
+graph["final"] = dict()
+
+infinity = float("inf")
+costs = dict()
+costs["a"] = 6
+costs["b"] = 2
+costs["final"] = infinity
+
+parents = dict()
+parents["a"] = "start"
+parents["b"] = "start"
+parents["in"] = None
+
+checked_node = []
 
 print(graph)
-
-# queue in PY
-from collections import deque
-
-
-def search(name):
-    search_queue = deque()
-    search_queue += graph[name]
-    searched = []
-    while search_queue:
-        person = search_queue.popleft()
-        if not person in searched:
-            if seller(person):
-                print(f'It\'s {person}')
-                return True
-            else:
-                search_queue += graph[person]
-                searched.append(person)
-    return False
-
-
-def seller(name):
-    return name == "bob"
-
-
-print(search("me"))
-
-
+print(costs)
+print(parents)
