@@ -492,3 +492,21 @@
 # print(get_add(5, "str"))
 # print(get_add(5, True))
 
+
+# def get_sum(a):
+#     res = sum(filter(lambda x: type(x) is int, a))
+#     return res
+# print(get_sum([1, 4, 10, "str", True]))
+
+# def get_even_sum(a):
+#     res = sum(filter(lambda x: type(x) is int and x % 2 == 0, a))
+#     return res
+#
+# print(get_even_sum([1, 4, 10, "str", True]))
+
+
+# def get_list_dig(lst):
+#     res = list(filter(lambda x: isinstance(x, (int, float)) and not isinstance(x, bool), lst))
+#     return res
+#
+# print(get_list_dig([1, -4, 10.5, "str", True]))
