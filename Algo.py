@@ -195,6 +195,9 @@ costs["a"] = 6
 costs["b"] = 2
 costs["final"] = infinity
 
+
+
+
 parents = dict()
 parents["a"] = "start"
 parents["b"] = "start"

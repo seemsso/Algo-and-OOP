@@ -474,3 +474,20 @@
 # transform_notes = sorted(notes, key= lambda x: orig.index(x))
 # print(*transform_notes)
 
+""" isinstance """
+
+# def get_add(a, b):
+#     if type(a) in (int, float) and type(b) in (int, float):
+#         return a + b
+#     elif type(a) == str and type(a) == type(b):
+#         return a + b
+#     else:
+#         return None
+#
+# print(get_add(5, 19))
+# print(get_add(5, 19.5))
+# print(get_add(5.5, 19.3))
+# print(get_add(5, "str"))
+# print(get_add("str", "str"))
+# print(get_add(5, "str"))
+# print(get_add(5, True))
