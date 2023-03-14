@@ -205,6 +205,26 @@ parents["in"] = None
 
 checked_node = []
 
-print(graph)
-print(costs)
-print(parents)
+
+def find_lowest(node):
+    lowest_cost = float('inf')
+    lowest_cost_node = None
+    for node in costs:
+        cost = costs[node]
+        if cost < lowest_cost and node not in checked_node:
+            lowest_cost = cost
+            lowest_cost_node = node
+    return lowest_cost_node
+
+
+node = find_lowest(costs)
+while node is not None:
+    cost = costs[node]
+    neighbors = graph[node]
+    for n in neighbors.keys():
+        new_cost = cost + neighbors[n]
+        if costs[n] > new_cost:
+            costs[n] = new_cost
+            parents[n] = node
+    checked_node.append(node)
+    node = find_lowest(costs)
