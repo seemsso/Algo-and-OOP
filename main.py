@@ -510,3 +510,26 @@
 #     return res
 #
 # print(get_list_dig([1, -4, 10.5, "str", True]))
+
+
+""" all and any """
+
+# a = [2, 4, 6, 8, 22, 56]
+#
+# print(all(map(lambda x: x % 2 == 0, a))) # => True
+
+# a = [8.2, -11.0, 20.0, 3.4, -1.2]
+#
+# print(any(map(lambda x: x < 0, a))) # => True
+
+# a = ["str1", "str2", 3, "str3"]
+# def is_string(coll):
+#     return all(map(lambda x: isinstance(x, str), coll))
+#
+# print(is_string(a)) # => False
+
+
+# a = [3, 3, 3, 2, 3, 3]
+#
+# print("отчислен" if any(map(lambda x: x < 3, a)) else "учится") # => отчислен
+
