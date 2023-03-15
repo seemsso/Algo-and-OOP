@@ -178,53 +178,90 @@
 
 """ Dijkstra algorithm """
 
-graph = dict()
-graph["start"] = dict()
-graph["start"]["a"] = 6
-graph["start"]["b"] = 2
-graph["a"] = dict()
-graph["a"]["final"] = 1
-graph["b"] = dict()
-graph["b"]["a"] = 3
-graph["b"]["final"] = 5
-graph["final"] = dict()
+# graph = dict()
+# graph["start"] = dict()
+# graph["start"]["a"] = 6
+# graph["start"]["b"] = 2
+# graph["a"] = dict()
+# graph["a"]["final"] = 1
+# graph["b"] = dict()
+# graph["b"]["a"] = 3
+# graph["b"]["final"] = 5
+# graph["final"] = dict()
+#
+# infinity = float("inf")
+# costs = dict()
+# costs["a"] = 6
+# costs["b"] = 2
+# costs["final"] = infinity
+#
+#
+#
+#
+# parents = dict()
+# parents["a"] = "start"
+# parents["b"] = "start"
+# parents["in"] = None
+#
+#
+#
+#
+# checked_node = []
+#
+#
+# def find_lowest(node):
+#     lowest_cost = float('inf')
+#     lowest_cost_node = None
+#     for node in costs:
+#         cost = costs[node]
+#         if cost < lowest_cost and node not in checked_node:
+#             lowest_cost = cost
+#             lowest_cost_node = node
+#     return lowest_cost_node
+#
+#
+# node = find_lowest(costs)
+# while node is not None:
+#     cost = costs[node]
+#     neighbors = graph[node]
+#     for n in neighbors.keys():
+#         new_cost = cost + neighbors[n]
+#         if costs[n] > new_cost:
+#             costs[n] = new_cost
+#             parents[n] = node
+#     checked_node.append(node)
+#     node = find_lowest(costs)
 
-infinity = float("inf")
-costs = dict()
-costs["a"] = 6
-costs["b"] = 2
-costs["final"] = infinity
+
+""" greedy algorithm """
+
+states = ("wa", "mt", "id", "tch", "ca")
+
+stations = {}
+
+stations["kone"] = ("wa", "mt")
+stations["5fm"] = ("ca", "wa")
+stations["jamfm"] = ("id", "tch", "mt")
+
+final_stations = set()
+
+
+best_station = None
+states_covered = set()
+
+for station, states_for_station in stations.items():
+    covered = states & states_for_station
+    if len(covered) > len(states_covered):
+        best_station = station
+        states_covered = covered
 
 
 
 
-parents = dict()
-parents["a"] = "start"
-parents["b"] = "start"
-parents["in"] = None
-
-checked_node = []
 
 
-def find_lowest(node):
-    lowest_cost = float('inf')
-    lowest_cost_node = None
-    for node in costs:
-        cost = costs[node]
-        if cost < lowest_cost and node not in checked_node:
-            lowest_cost = cost
-            lowest_cost_node = node
-    return lowest_cost_node
 
 
-node = find_lowest(costs)
-while node is not None:
-    cost = costs[node]
-    neighbors = graph[node]
-    for n in neighbors.keys():
-        new_cost = cost + neighbors[n]
-        if costs[n] > new_cost:
-            costs[n] = new_cost
-            parents[n] = node
-    checked_node.append(node)
-    node = find_lowest(costs)
+""" Data structures curse """
+
+
