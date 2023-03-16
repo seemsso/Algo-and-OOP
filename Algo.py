@@ -235,29 +235,39 @@
 
 """ greedy algorithm """
 
-states = {"wa", "mt", "id", "tch", "ca"}
+# states = {"wa", "mt", "id", "tch", "ca"}
+#
+# stations = dict()
+#
+# stations["kone"] = {"wa", "mt"}
+# stations["5fm"] = {"ca", "wa"}
+# stations["jamfm"] = {"id", "tch", "mt"}
+#
+# final_stations = set()
+#
+# while states:
+#     best_station = None
+#     states_covered = set()
+#
+#     for station, states_for_station in stations.items():
+#         covered = (states & states_for_station)
+#         if len(covered) > len(states_covered):
+#             best_station = station
+#             states_covered = covered
+#             states -= states_covered
+#             final_stations.add(best_station)
+#
+# print(final_stations)
 
-stations = dict()
+""" Dynamic programming """
 
-stations["kone"] = {"wa", "mt"}
-stations["5fm"] = {"ca", "wa"}
-stations["jamfm"] = {"id", "tch", "mt"}
+# if word_a[i] == word_b[j]:
+#     cell[i][j] = cell[i - 1][j - 1] + 1
+# else:
+#     cell[i][j] = max(cell[i - 1][j], cell[i][j - 1])
 
-final_stations = set()
 
-while states:
-    best_station = None
-    states_covered = set()
 
-    for station, states_for_station in stations.items():
-        covered = (states & states_for_station)
-        if len(covered) > len(states_covered):
-            best_station = station
-            states_covered = covered
-            states -= states_covered
-            final_stations.add(best_station)
-
-print(final_stations)
 
 
 
@@ -266,5 +276,3 @@ print(final_stations)
 
 
 """ Data structures curse """
-
-
