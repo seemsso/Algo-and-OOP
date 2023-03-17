@@ -266,13 +266,46 @@
 # else:
 #     cell[i][j] = max(cell[i - 1][j], cell[i][j - 1])
 
-
-
-
-
-
-
-
-
-
 """ Data structures curse """
+
+
+
+
+""" Training Codewars """
+
+#input 9119
+#output 811181
+
+#input 765
+#output 493625
+
+# a = 922
+# #output 8144
+# def square_digits(num):
+#     trans = str(num)
+#     string = ''
+#     for i in trans:
+#         string += str((int(i) ** 2))
+#     return int(string)
+#
+#
+# print(square_digits(a))
+
+#An isogram
+# isIsogram "Dermatoglyphics" = true
+# isIsogram "moose" = false
+# isIsogram "aba" = false
+
+a = 'moOse'
+def is_isogram(string):
+    string = string.lower()
+    if not string:
+        return True
+    cur = ''
+    for i in string:
+        if i in cur:
+            return False
+        cur += i
+    return True
+
+print(is_isogram(a))
