@@ -296,16 +296,53 @@
 # isIsogram "moose" = false
 # isIsogram "aba" = false
 
-a = 'moOse'
-def is_isogram(string):
-    string = string.lower()
-    if not string:
-        return True
-    cur = ''
-    for i in string:
-        if i in cur:
-            return False
-        cur += i
-    return True
+# a = 'moOse'
+# def is_isogram(string):
+#     string = string.lower()
+#     if not string:
+#         return True
+#     cur = ''
+#     for i in string:
+#         if i in cur:
+#             return False
+#         cur += i
+#     return True
+#
+# print(is_isogram(a))
+#
+# a = '3279'
+# def fake_bin(x):
+#     res = ''
+#     for i in x:
+#         if int(i) >= 5:
+#             res += "1"
+#         else:
+#             res += "0"
+#     return res
+#
+# print(fake_bin(a))
 
-print(is_isogram(a))
+
+# input  'the_stealth_warrior'
+# output "theStealthWarrior"
+
+a = 'the-stealth-warrior'
+def to_camel_case(text):
+    res = ''
+    if text[0].isalpha():
+        res += text[0].upper()
+    up = None
+    for i, val in enumerate(text[1:]):
+        if up is not None:
+            res += up
+            up = None
+            continue
+        if not val.isalpha():
+            if i + 2 < len(text):
+                up = text[i + 2].upper()
+        else:
+            res += val
+    return res
+
+print(to_camel_case(a))
+
