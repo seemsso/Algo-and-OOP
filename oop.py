@@ -312,3 +312,5 @@ gr = Graph(data_graph)
 gr.show_bar()
 gr.set_show(False)
 gr.show_table()
+
+
