@@ -219,3 +219,35 @@
 #
 # points = [Point(y, y) for x, y in enumerate(range(2000), start=1) if y % 2 != 0]
 # points[1] = Point(3, 3, 'yellow')
+
+
+class Line:
+
+    def __init__(self, a, b, c, d):
+        self.sp = (a, b)
+        self.ep = (c, d)
+
+
+class Rect:
+
+    def __init__(self, a, b, c, d):
+        self.sp = (a, b)
+        self.ep = (c, d)
+
+
+class Ellipse:
+
+    def __init__(self, a, b, c, d):
+        self.sp = (a, b)
+        self.ep = (c, d)
+
+
+
+import random
+
+elements = []
+for el in range(5):
+    a, b, c, d = [random.randrange(0, 1000) for i in range(4)]
+    elements.append(random.choice([Line(0, 0, 0, 0), Rect(a, b, c, d), Ellipse(a, b, c, d)]))
+
+print(elements)
