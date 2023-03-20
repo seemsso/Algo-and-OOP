@@ -221,33 +221,55 @@
 # points[1] = Point(3, 3, 'yellow')
 
 
-class Line:
+# class Line:
+#
+#     def __init__(self, a, b, c, d):
+#         self.sp = (a, b)
+#         self.ep = (c, d)
+#
+#
+# class Rect:
+#
+#     def __init__(self, a, b, c, d):
+#         self.sp = (a, b)
+#         self.ep = (c, d)
+#
+#
+# class Ellipse:
+#
+#     def __init__(self, a, b, c, d):
+#         self.sp = (a, b)
+#         self.ep = (c, d)
+#
+#
+#
+# import random
+#
+# elements = []
+# for el in range(5):
+#     a, b, c, d = [random.randrange(0, 1000) for i in range(4)]
+#     elements.append(random.choice([Line(0, 0, 0, 0), Rect(a, b, c, d), Ellipse(a, b, c, d)]))
+#
+# print(elements)
 
-    def __init__(self, a, b, c, d):
-        self.sp = (a, b)
-        self.ep = (c, d)
+
+class TriangleChecker:
+
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def is_triangle(self):
+        if not all(map(lambda x: (type(x) in (int, float)) and x >= 0, (self.a, self.b, self.c))):
+            return 1
+        elif self.a > self.b + self.c or self.b > self.a + self.c or self.c > self.a + self.b:
+            return 2
+        else:
+            return 3
 
 
-class Rect:
+a, b, c = map(int, input().split())
 
-    def __init__(self, a, b, c, d):
-        self.sp = (a, b)
-        self.ep = (c, d)
-
-
-class Ellipse:
-
-    def __init__(self, a, b, c, d):
-        self.sp = (a, b)
-        self.ep = (c, d)
-
-
-
-import random
-
-elements = []
-for el in range(5):
-    a, b, c, d = [random.randrange(0, 1000) for i in range(4)]
-    elements.append(random.choice([Line(0, 0, 0, 0), Rect(a, b, c, d), Ellipse(a, b, c, d)]))
-
-print(elements)
+tr = TriangleChecker(a, b, c)
+print(tr.is_triangle())
