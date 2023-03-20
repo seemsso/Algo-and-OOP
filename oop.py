@@ -253,23 +253,62 @@
 # print(elements)
 
 
-class TriangleChecker:
+# class TriangleChecker:
+#
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def is_triangle(self):
+#         if not all(map(lambda x: (type(x) in (int, float)) and x >= 0, (self.a, self.b, self.c))):
+#             return 1
+#         elif self.a > self.b + self.c or self.b > self.a + self.c or self.c > self.a + self.b:
+#             return 2
+#         else:
+#             return 3
+#
+#
+# a, b, c = map(int, input().split())
+#
+# tr = TriangleChecker(a, b, c)
+# print(tr.is_triangle())
 
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
 
-    def is_triangle(self):
-        if not all(map(lambda x: (type(x) in (int, float)) and x >= 0, (self.a, self.b, self.c))):
-            return 1
-        elif self.a > self.b + self.c or self.b > self.a + self.c or self.c > self.a + self.b:
-            return 2
+class Graph:
+
+    def __init__(self, data):
+        self.data = data[:]
+        self.is_show = True
+
+    def set_data(self, data):
+        self.data = data[:]
+
+    def show_table(self):
+        if self.is_show:
+            print(f"{' '.join(map(str, self.data))}")
         else:
-            return 3
+            print("Отображение данных закрыто")
+
+    def show_graph(self):
+        if self.is_show:
+            print(f"Графическое отображение данных: {' '.join(map(str, self.data))}")
+        else:
+            print("Отображение данных закрыто")
+
+    def show_bar(self):
+        if self.is_show:
+            print(f"Столбчатая диаграмма: {' '.join(map(str, self.data))}")
+        else:
+            print("Отображение данных закрыто")
+
+    def set_show(self, fl_show):
+        self.is_show = fl_show
 
 
-a, b, c = map(int, input().split())
+data_graph = list(map(int, input().split()))
 
-tr = TriangleChecker(a, b, c)
-print(tr.is_triangle())
+gr = Graph(data_graph)
+gr.show_bar()
+gr.set_show(False)
+gr.show_table()
