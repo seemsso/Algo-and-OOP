@@ -135,7 +135,6 @@
 # print(db.lst_data)
 
 
-
 # import sys
 
 
@@ -157,9 +156,6 @@
 # db = DataBase()
 # db.insert(lst_in)
 # print(db.lst_data)
-
-
-
 
 
 # class Translator:
@@ -198,6 +194,7 @@
 
 
 """ __INIT__"""
+
 
 # class Money:
 #
@@ -275,42 +272,72 @@
 # print(tr.is_triangle())
 
 
-class Graph:
+# class Graph:
+#
+#     def __init__(self, data):
+#         self.data = data[:]
+#         self.is_show = True
+#
+#     def set_data(self, data):
+#         self.data = data[:]
+#
+#     def show_table(self):
+#         if self.is_show:
+#             print(f"{' '.join(map(str, self.data))}")
+#         else:
+#             print("Отображение данных закрыто")
+#
+#     def show_graph(self):
+#         if self.is_show:
+#             print(f"Графическое отображение данных: {' '.join(map(str, self.data))}")
+#         else:
+#             print("Отображение данных закрыто")
+#
+#     def show_bar(self):
+#         if self.is_show:
+#             print(f"Столбчатая диаграмма: {' '.join(map(str, self.data))}")
+#         else:
+#             print("Отображение данных закрыто")
+#
+#     def set_show(self, fl_show):
+#         self.is_show = fl_show
+#
+#
+# data_graph = list(map(int, input().split()))
+#
+# gr = Graph(data_graph)
+# gr.show_bar()
+# gr.set_show(False)
+# gr.show_table()
 
-    def __init__(self, data):
-        self.data = data[:]
-        self.is_show = True
 
-    def set_data(self, data):
-        self.data = data[:]
-
-    def show_table(self):
-        if self.is_show:
-            print(f"{' '.join(map(str, self.data))}")
-        else:
-            print("Отображение данных закрыто")
-
-    def show_graph(self):
-        if self.is_show:
-            print(f"Графическое отображение данных: {' '.join(map(str, self.data))}")
-        else:
-            print("Отображение данных закрыто")
-
-    def show_bar(self):
-        if self.is_show:
-            print(f"Столбчатая диаграмма: {' '.join(map(str, self.data))}")
-        else:
-            print("Отображение данных закрыто")
-
-    def set_show(self, fl_show):
-        self.is_show = fl_show
+class CPU:
+    def __init__(self, name, fr):
+        self.name = name
+        self.fr = fr
 
 
-data_graph = list(map(int, input().split()))
+class Memory:
 
-gr = Graph(data_graph)
-gr.show_bar()
-gr.set_show(False)
-gr.show_table()
+    def __init__(self, name, volume):
+        self.name = name
+        self.volume = volume
 
 
+class Motherboard:
+
+    def __init__(self, name, cpu, total_mem_slots=4, *mem_slots):
+        self.name = name
+        self.cpu = cpu
+        self.total_mem_slots = total_mem_slots
+        self.mem_slots = mem_slots[: self.total_mem_slots]
+
+    def get_config(self):
+        return [f"Материнская плата: {self.name}','Центральный процессор: {self.cpu.name},"
+                f" {self.cpu.fr}','Слотов памяти: {self.total_mem_slots}',"
+                "Память:" + '; '.join(map(lambda x: f"{x.name} - {x.volume}", self.mem_slots))
+                ]
+
+
+mb = Motherboard("ASUS", CPU('Ryzen 5700', 3800), 3, Memory('G-skill', 4000), Memory('HyperX', 3600))
+print(mb.get_config())
