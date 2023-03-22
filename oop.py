@@ -311,33 +311,33 @@
 # gr.show_table()
 
 
-class CPU:
-    def __init__(self, name, fr):
-        self.name = name
-        self.fr = fr
-
-
-class Memory:
-
-    def __init__(self, name, volume):
-        self.name = name
-        self.volume = volume
-
-
-class Motherboard:
-
-    def __init__(self, name, cpu, total_mem_slots=4, *mem_slots):
-        self.name = name
-        self.cpu = cpu
-        self.total_mem_slots = total_mem_slots
-        self.mem_slots = mem_slots[: self.total_mem_slots]
-
-    def get_config(self):
-        return [f"Материнская плата: {self.name}','Центральный процессор: {self.cpu.name},"
-                f" {self.cpu.fr}','Слотов памяти: {self.total_mem_slots}',"
-                "Память:" + '; '.join(map(lambda x: f"{x.name} - {x.volume}", self.mem_slots))
-                ]
-
-
-mb = Motherboard("ASUS", CPU('Ryzen 5700', 3800), 3, Memory('G-skill', 4000), Memory('HyperX', 3600))
-print(mb.get_config())
+# class CPU:
+#     def __init__(self, name, fr):
+#         self.name = name
+#         self.fr = fr
+#
+#
+# class Memory:
+#
+#     def __init__(self, name, volume):
+#         self.name = name
+#         self.volume = volume
+#
+#
+# class Motherboard:
+#
+#     def __init__(self, name, cpu, total_mem_slots=4, *mem_slots):
+#         self.name = name
+#         self.cpu = cpu
+#         self.total_mem_slots = total_mem_slots
+#         self.mem_slots = mem_slots[: self.total_mem_slots]
+#
+#     def get_config(self):
+#         return [f"Материнская плата: {self.name}','Центральный процессор: {self.cpu.name},"
+#                 f" {self.cpu.fr}','Слотов памяти: {self.total_mem_slots}',"
+#                 "Память:" + '; '.join(map(lambda x: f"{x.name} - {x.volume}", self.mem_slots))
+#                 ]
+#
+#
+# mb = Motherboard("ASUS", CPU('Ryzen 5700', 3800), 3, Memory('G-skill', 4000), Memory('HyperX', 3600))
+# print(mb.get_config())

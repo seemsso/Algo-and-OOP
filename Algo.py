@@ -326,23 +326,50 @@
 # input  'the_stealth_warrior'
 # output "theStealthWarrior"
 
-a = 'the-stealth-warrior'
-def to_camel_case(text):
-    res = ''
-    if text[0].isalpha():
-        res += text[0].upper()
-    up = None
-    for i, val in enumerate(text[1:]):
-        if up is not None:
-            res += up
-            up = None
-            continue
-        if not val.isalpha():
-            if i + 2 < len(text):
-                up = text[i + 2].upper()
-        else:
-            res += val
-    return res
+# a = 'the-stealth-warrior'
+# def to_camel_case(text):
+#     res = ''
+#     if text[0].isalpha():
+#         res += text[0].upper()
+#     up = None
+#     for i, val in enumerate(text[1:]):
+#         if up is not None:
+#             res += up
+#             up = None
+#             continue
+#         if not val.isalpha():
+#             if i + 2 < len(text):
+#                 up = text[i + 2].upper()
+#         else:
+#             res += val
+#     return res
+#
+# print(to_camel_case(a))
 
-print(to_camel_case(a))
 
+""" Tim Roughgarden """
+""" MergeSort """
+
+# start = [1, 4, 5, 6, 2, 3, 7, 8]
+# a = [1, 4, 5, 6]
+# b = [2, 3, 7, 8]
+
+
+# i = 0
+# j = 0
+# res = set()
+# for _ in enumerate(start):
+#     if i >= len(a):
+#         res.add(b[j])
+#         j += 1
+#     elif j >= len(b):
+#         res.add(a[i])
+#         i += 1
+#     elif a[i] < b[j]:
+#         res.add(a[i])
+#         i += 1
+#     else:
+#         res.add(b[j])
+#         j += 1
+#
+# print(res)
