@@ -48,9 +48,7 @@
 # print(sort_lst(a)) # =>  [1, 2, 3, 7, 10, 25]
 
 
-
 """ RECURSION with stack """
-
 
 # def factorial(x):
 #     if x == 1:
@@ -106,7 +104,6 @@
 # print(quicksort(lst))
 
 
-
 # def longest(a1, a2):
 #     a1 = set(a1)
 #     print(a2)
@@ -117,7 +114,6 @@
 
 
 """ HASH TABLES """
-
 
 # voted = {}
 #
@@ -268,16 +264,13 @@
 
 """ Data structures curse """
 
-
-
-
 """ Training Codewars """
 
-#input 9119
-#output 811181
+# input 9119
+# output 811181
 
-#input 765
-#output 493625
+# input 765
+# output 493625
 
 # a = 922
 # #output 8144
@@ -291,7 +284,7 @@
 #
 # print(square_digits(a))
 
-#An isogram
+# An isogram
 # isIsogram "Dermatoglyphics" = true
 # isIsogram "moose" = false
 # isIsogram "aba" = false
@@ -350,6 +343,7 @@
 """ Tim Roughgarden """
 """ MergeSort """
 
+
 # start = [1, 4, 5, 6, 2, 3, 7, 8]
 # a = [1, 4, 5, 6]
 # b = [2, 3, 7, 8]
@@ -373,3 +367,17 @@
 #         j += 1
 #
 # print(res)
+
+
+def interpret(command: str) -> str:
+    res = ""
+    length = len(command)
+    for i, val in enumerate(command):
+        if val.isalpha():
+            res += val
+        elif val == "(":
+            if i + 1 < length and command[i + 1] == ")":
+                res += "o"
+    return res
+
+a = "G()(al)"

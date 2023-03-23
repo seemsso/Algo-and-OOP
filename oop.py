@@ -195,7 +195,6 @@
 
 """ __INIT__"""
 
-
 # class Money:
 #
 #     def __init__(self, x, y=0):
@@ -397,8 +396,6 @@
 # print(cart.get_list())
 
 
-
-
 # class ListObject:
 #
 #     def __init__(self, data: str):
@@ -433,7 +430,10 @@ class AbstractClass:
     def __new__(cls, *args, **kwargs):
         return "Ошибка: нельзя создавать объекты абстрактного класса"
 
+
 abstract = AbstractClass()
+
+
 # print(abstract)
 
 
@@ -452,6 +452,24 @@ objs = [SingletonFive(str(n)) for n in range(10)]
 # print(objs)
 
 
+TYPE_OS = 1  # 1 - Windows; 2 - Linux
 
 
+class DialogWindows:
+    name_class = "DialogWindows"
 
+
+class DialogLinux:
+    name_class = "DialogLinux"
+
+
+class Dialog:
+    objs = None
+
+    def __new__(cls, *args, **kwargs):
+        if TYPE_OS == 1:
+            objs = super().__new__(DialogWindows)
+        else:
+            objs = super().__new__(DialogLinux)
+        objs.name = args[0]
+        return objs
