@@ -428,6 +428,28 @@
 """ Magic Method __new__ """
 
 
+class AbstractClass:
+
+    def __new__(cls, *args, **kwargs):
+        return "Ошибка: нельзя создавать объекты абстрактного класса"
+
+abstract = AbstractClass()
+# print(abstract)
+
+
+# input only 5objs,next == 5
+class SingletonFive:
+    name = []
+
+    def __new__(cls, *args, **kwargs):
+        if len(cls.name) < 5:
+            cls.name.append(super().__new__(cls))
+        return cls.name[-1]
+
+
+objs = [SingletonFive(str(n)) for n in range(10)]
+
+# print(objs)
 
 
 
