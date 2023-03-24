@@ -343,7 +343,6 @@
 """ Tim Roughgarden """
 """ MergeSort """
 
-
 # start = [1, 4, 5, 6, 2, 3, 7, 8]
 # a = [1, 4, 5, 6]
 # b = [2, 3, 7, 8]
@@ -369,15 +368,41 @@
 # print(res)
 
 
-def interpret(command: str) -> str:
-    res = ""
-    length = len(command)
-    for i, val in enumerate(command):
-        if val.isalpha():
-            res += val
-        elif val == "(":
-            if i + 1 < length and command[i + 1] == ")":
-                res += "o"
-    return res
+# def interpret(command: str) -> str:
+#     res = ""
+#     length = len(command)
+#     for i, val in enumerate(command):
+#         if val.isalpha():
+#             res += val
+#         elif val == "(":
+#             if i + 1 < length and command[i + 1] == ")":
+#                 res += "o"
+#     return res
+#
+# a = "G()(al)"
 
-a = "G()(al)"
+
+#RLE
+a = 'AAABBBCCDEFGHZZAAAXXKK'
+output = 'A3B3C2DEFGHZ2A3X2'
+
+
+def write_score(seq):
+    el = seq[0]
+    score = 1
+    lst = []
+    for i in range(1, len(seq)):
+        if seq[i] == el:
+            score += 1
+        elif score == 1:
+            lst.append(el)
+            el = seq[i]
+        else:
+            lst.append(el)
+            lst.append(str(score))
+            el = seq[i]
+            score = 1
+    return ''.join(lst)
+
+
+print(write_score(a))
