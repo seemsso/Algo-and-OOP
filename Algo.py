@@ -343,30 +343,63 @@
 """ Tim Roughgarden """
 """ MergeSort """
 
-# start = [1, 4, 5, 6, 2, 3, 7, 8]
-# a = [1, 4, 5, 6]
-# b = [2, 3, 7, 8]
+start = [1, 4, 5, 6, 2, 3, 7, 8]
+a = [1, 4, 5, 6]
+b = [2, 3, 7, 8]
 
+# old_realisation
 
 # i = 0
 # j = 0
-# res = set()
+# res = []
 # for _ in enumerate(start):
 #     if i >= len(a):
-#         res.add(b[j])
+#         res.append(b[j])
 #         j += 1
 #     elif j >= len(b):
-#         res.add(a[i])
+#         res.append(a[i])
 #         i += 1
 #     elif a[i] < b[j]:
-#         res.add(a[i])
+#         res.append(a[i])
 #         i += 1
 #     else:
-#         res.add(b[j])
+#         res.append(b[j])
 #         j += 1
-#
-# print(res)
 
+
+# new_realisation
+
+def merge(a, b):
+    res = []
+    n = len(a)
+    m = len(b)
+
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] > b[j]:
+            res.append(b[j])
+            j += 1
+        else:
+            res.append(a[i])
+            i += 1
+    res += a[i:] + b[j:]
+    return res
+
+def merge_split(lst):
+    part = len(lst) // 2
+    part1 = lst[:part]
+    part2 = lst[part:]
+
+    if len(part1) > 1:
+        part1 = merge_split(part1)
+    elif len(part2) > 1:
+        part2 = merge_split(part2)
+
+    return merge(part1, part2)
+
+
+print(merge_split(start))
 
 # def interpret(command: str) -> str:
 #     res = ""
@@ -382,27 +415,27 @@
 # a = "G()(al)"
 
 
-#RLE
-a = 'AAABBBCCDEFGHZZAAAXXKK'
-output = 'A3B3C2DEFGHZ2A3X2'
-
-
-def write_score(seq):
-    el = seq[0]
-    score = 1
-    lst = []
-    for i in range(1, len(seq)):
-        if seq[i] == el:
-            score += 1
-        elif score == 1:
-            lst.append(el)
-            el = seq[i]
-        else:
-            lst.append(el)
-            lst.append(str(score))
-            el = seq[i]
-            score = 1
-    return ''.join(lst)
-
-
-print(write_score(a))
+# RLE
+# a = 'AAABBBCCDEFGHZZAAAXXKK'
+# output = 'A3B3C2DEFGHZ2A3X2'
+#
+#
+# def write_score(seq):
+#     el = seq[0]
+#     score = 1
+#     lst = []
+#     for i in range(1, len(seq)):
+#         if seq[i] == el:
+#             score += 1
+#         elif score == 1:
+#             lst.append(el)
+#             el = seq[i]
+#         else:
+#             lst.append(el)
+#             lst.append(str(score))
+#             el = seq[i]
+#             score = 1
+#     return ''.join(lst)
+#
+#
+# print(write_score(a))
