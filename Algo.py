@@ -343,9 +343,9 @@
 """ Tim Roughgarden """
 """ MergeSort """
 
-start = [1, 4, 5, 6, 2, 3, 7, 8]
-a = [1, 4, 5, 6]
-b = [2, 3, 7, 8]
+# start = [1, 4, 5, 6, 2, 3, 7, 8]
+# a = [1, 4, 5, 6]
+# b = [2, 3, 7, 8]
 
 # old_realisation
 
@@ -369,37 +369,37 @@ b = [2, 3, 7, 8]
 
 # new_realisation
 
-def merge(a, b):
-    res = []
-    n = len(a)
-    m = len(b)
-
-    i = 0
-    j = 0
-    while i < n and j < m:
-        if a[i] > b[j]:
-            res.append(b[j])
-            j += 1
-        else:
-            res.append(a[i])
-            i += 1
-    res += a[i:] + b[j:]
-    return res
-
-def merge_split(lst):
-    part = len(lst) // 2
-    part1 = lst[:part]
-    part2 = lst[part:]
-
-    if len(part1) > 1:
-        part1 = merge_split(part1)
-    elif len(part2) > 1:
-        part2 = merge_split(part2)
-
-    return merge(part1, part2)
-
-
-print(merge_split(start))
+# def merge(a, b):
+#     res = []
+#     n = len(a)
+#     m = len(b)
+#
+#     i = 0
+#     j = 0
+#     while i < n and j < m:
+#         if a[i] > b[j]:
+#             res.append(b[j])
+#             j += 1
+#         else:
+#             res.append(a[i])
+#             i += 1
+#     res += a[i:] + b[j:]
+#     return res
+#
+# def merge_split(lst):
+#     part = len(lst) // 2
+#     part1 = lst[:part]
+#     part2 = lst[part:]
+#
+#     if len(part1) > 1:
+#         part1 = merge_split(part1)
+#     elif len(part2) > 1:
+#         part2 = merge_split(part2)
+#
+#     return merge(part1, part2)
+#
+#
+# print(merge_split(start))
 
 # def interpret(command: str) -> str:
 #     res = ""
@@ -439,3 +439,27 @@ print(merge_split(start))
 #
 #
 # print(write_score(a))
+
+# Leetcode 1221
+# input -  'RLLLLRRRRL'
+# output - 3
+
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        res = 0
+        score_cur = 1
+        score_next = 0
+        cur = s[0]
+        for i in range(1, len(s)):
+            if s[i] != cur:
+                score_next += 1
+            else:
+                score_cur += 1
+            if score_cur == score_next:
+                res += 1
+                score_cur = 0
+                score_next = 0
+                cur = s[i]
+        if score_cur or score_next:
+            res += 1
+        return res
