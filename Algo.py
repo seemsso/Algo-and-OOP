@@ -444,22 +444,22 @@
 # input -  'RLLLLRRRRL'
 # output - 3
 
-class Solution:
-    def balancedStringSplit(self, s: str) -> int:
-        res = 0
-        score_cur = 1
-        score_next = 0
-        cur = s[0]
-        for i in range(1, len(s)):
-            if s[i] != cur:
-                score_next += 1
-            else:
-                score_cur += 1
-            if score_cur == score_next:
-                res += 1
-                score_cur = 0
-                score_next = 0
-                cur = s[i]
-        if score_cur or score_next:
-            res += 1
-        return res
+# class Solution:
+#     def balancedStringSplit(self, s: str) -> int:
+#         res = 0
+#         score_cur = 1
+#         score_next = 0
+#         cur = s[0]
+#         for i in range(1, len(s)):
+#             if s[i] != cur:
+#                 score_next += 1
+#             else:
+#                 score_cur += 1
+#             if score_cur == score_next:
+#                 res += 1
+#                 score_cur = 0
+#                 score_next = 0
+#                 cur = s[i]
+#         if score_cur or score_next:
+#             res += 1
+#         return res
