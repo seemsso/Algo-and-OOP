@@ -343,6 +343,7 @@
 """ Tim Roughgarden """
 """ MergeSort """
 
+
 # start = [1, 4, 5, 6, 2, 3, 7, 8]
 # a = [1, 4, 5, 6]
 # b = [2, 3, 7, 8]
@@ -369,6 +370,7 @@
 
 # new_realisation
 
+# a = [1, 2, 5, 7, 9, 2, 3]
 # def merge(a, b):
 #     res = []
 #     n = len(a)
@@ -393,13 +395,13 @@
 #
 #     if len(part1) > 1:
 #         part1 = merge_split(part1)
-#     elif len(part2) > 1:
+#     if len(part2) > 1:
 #         part2 = merge_split(part2)
 #
 #     return merge(part1, part2)
 #
 #
-# print(merge_split(start))
+# print(merge_split(a))
 
 # def interpret(command: str) -> str:
 #     res = ""
@@ -463,3 +465,57 @@
 #         if score_cur or score_next:
 #             res += 1
 #         return res
+
+# draft
+# a = [1,2,3,4,5]
+#
+#
+# def twoSum(nums, target: int):
+#     res = []
+#     for i in range(len(nums) - 1):
+#         if nums[i] + nums[i + 1] == target:
+#             res.extend((i, i + 1))
+#             return res
+#     if nums[-1] + nums[-2] == target and not res:
+#         res.extend((len(nums) - 1, len(nums) - 2))
+#         return res
+#
+#
+# print(twoSum(a, 5))
+
+
+# 912 leetcode
+
+
+class Solution:
+    def sortArray(self, nums):
+        def merge_res(a, b):
+            res = []
+            n = len(a)
+            m = len(b)
+            i = 0
+            j = 0
+            while i < n and j < m:
+                if a[i] < b[j]:
+                    res.append(a[i])
+                    i += 1
+                else:
+                    res.append(b[j])
+                    j += 1
+            res += a[i:] + b[j:]
+            return res
+
+        def recursion(nums):
+            mid = len(nums) // 2
+            arr1 = nums[:mid]
+            arr2 = nums[mid:]
+
+            if len(arr1) >= 2:
+                arr1 = recursion(arr1)
+            if len(arr2) >= 2:
+                arr2 = recursion(arr2)
+
+            return merge_res(arr1, arr2)
+
+        final = recursion(nums)
+        return final
