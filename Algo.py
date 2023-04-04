@@ -343,7 +343,6 @@
 """ Tim Roughgarden """
 """ MergeSort """
 
-
 # start = [1, 4, 5, 6, 2, 3, 7, 8]
 # a = [1, 4, 5, 6]
 # b = [2, 3, 7, 8]
@@ -487,35 +486,50 @@
 # 912 leetcode
 
 
-class Solution:
-    def sortArray(self, nums):
-        def merge_res(a, b):
-            res = []
-            n = len(a)
-            m = len(b)
-            i = 0
-            j = 0
-            while i < n and j < m:
-                if a[i] < b[j]:
-                    res.append(a[i])
-                    i += 1
-                else:
-                    res.append(b[j])
-                    j += 1
-            res += a[i:] + b[j:]
-            return res
+# class Solution:
+#     def sortArray(self, nums):
+#         def merge_res(a, b):
+#             res = []
+#             n = len(a)
+#             m = len(b)
+#             i = 0
+#             j = 0
+#             while i < n and j < m:
+#                 if a[i] < b[j]:
+#                     res.append(a[i])
+#                     i += 1
+#                 else:
+#                     res.append(b[j])
+#                     j += 1
+#             res += a[i:] + b[j:]
+#             return res
+#
+#         def recursion(nums):
+#             mid = len(nums) // 2
+#             arr1 = nums[:mid]
+#             arr2 = nums[mid:]
+#
+#             if len(arr1) >= 2:
+#                 arr1 = recursion(arr1)
+#             if len(arr2) >= 2:
+#                 arr2 = recursion(arr2)
+#
+#             return merge_res(arr1, arr2)
+#
+#         final = recursion(nums)
+#         return final
 
-        def recursion(nums):
-            mid = len(nums) // 2
-            arr1 = nums[:mid]
-            arr2 = nums[mid:]
-
-            if len(arr1) >= 2:
-                arr1 = recursion(arr1)
-            if len(arr2) >= 2:
-                arr2 = recursion(arr2)
-
-            return merge_res(arr1, arr2)
-
-        final = recursion(nums)
-        return final
+#itmo 15
+# a = [17, 2, 9, 5, 3, 1, 10]
+#
+#
+# def select_sort(lst):
+#     for i in range(1, len(lst)):
+#         j = i
+#         while j > 0 and a[j] < a[j - 1]:
+#             a[j - 1], a[j] = a[j], a[j - 1]
+#             j -= 1
+#     return lst
+#
+#
+# print(select_sort(a))
