@@ -533,3 +533,21 @@
 #
 #
 # print(select_sort(a))
+
+
+
+#2160
+# my_list = 1549
+# def minimumSum(num):
+#     lst = sorted(map(int, list(str(my_list))))
+#     print(lst)
+#     num1 = lst[0] * 10 + lst[2]
+#     if num1 > 0:
+#         num2 = lst[1] * 10 + lst[3]
+#     else:
+#         num1 = lst[2]
+#         num2 = lst[3]
+#
+#     return num1 + num2
+#
+# print(minimumSum(my_list))
