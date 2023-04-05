@@ -519,7 +519,7 @@
 #         final = recursion(nums)
 #         return final
 
-#itmo 15
+# itmo 15
 # a = [17, 2, 9, 5, 3, 1, 10]
 #
 #
@@ -535,8 +535,7 @@
 # print(select_sort(a))
 
 
-
-#2160
+"""2160"""
 # my_list = 1549
 # def minimumSum(num):
 #     lst = sorted(map(int, list(str(my_list))))
@@ -551,3 +550,30 @@
 #     return num1 + num2
 #
 # print(minimumSum(my_list))
+
+
+"""1859"""
+a = "is2 sentence4 This1 a3"
+
+def sortSentence(s: str) -> str:
+    lst = s.split()  # [is2,sen4,This1,a3]
+    dct = {}
+    res = []
+    for i in range(len(lst)):
+        dct[int(lst[i][-1]) - 1] = lst[i][:-1]
+    # dct -> {0:This, 1:is, 2:a, 3:sen}
+    for i in range(len(lst)):
+        res.append(dct[i])
+    # res -> [This, is, a, sen]
+    result = ' '.join(res)
+    return result
+
+print(sortSentence(a))
+
+
+def sortSentence2(s: str) -> str:
+    words = s.split()
+    ans = [""] * len(words)
+    for word in words:
+        ans[int(word[-1]) - 1] = word[:-1]
+    return " ".join(ans)

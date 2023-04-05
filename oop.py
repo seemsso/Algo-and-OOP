@@ -476,27 +476,27 @@ objs = [SingletonFive(str(n)) for n in range(10)]
 #         return objs
 
 
-class Factory:
-
-    def build_sequence(self):
-        self.lst = []
-        return self.lst
-
-    def build_number(self, string):
-        self.res = float(string)
-        return self.res
-
-
-class Loader:
-    def parse_format(self, string, factory):
-        seq = factory.build_sequence()
-        for sub in string.split(","):
-            item = factory.build_number(sub)
-            seq.append(item)
-
-        return seq
-
-
-ld = Loader()
-s = input()
-res = ld.parse_format(s, Factory())
+# class Factory:
+#
+#     def build_sequence(self):
+#         self.lst = []
+#         return self.lst
+#
+#     def build_number(self, string):
+#         self.res = float(string)
+#         return self.res
+#
+#
+# class Loader:
+#     def parse_format(self, string, factory):
+#         seq = factory.build_sequence()
+#         for sub in string.split(","):
+#             item = factory.build_number(sub)
+#             seq.append(item)
+#
+#         return seq
+#
+#
+# ld = Loader()
+# s = input()
+# res = ld.parse_format(s, Factory())
