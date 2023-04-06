@@ -553,27 +553,58 @@
 
 
 """1859"""
-a = "is2 sentence4 This1 a3"
+# a = "is2 sentence4 This1 a3"
+#
+# def sortSentence(s: str) -> str:
+#     lst = s.split()  # [is2,sen4,This1,a3]
+#     dct = {}
+#     res = []
+#     for i in range(len(lst)):
+#         dct[int(lst[i][-1]) - 1] = lst[i][:-1]
+#     # dct -> {0:This, 1:is, 2:a, 3:sen}
+#     for i in range(len(lst)):
+#         res.append(dct[i])
+#     # res -> [This, is, a, sen]
+#     result = ' '.join(res)
+#     return result
+#
+# print(sortSentence(a))
+#
+#
+# def sortSentence2(s: str) -> str:
+#     words = s.split()
+#     ans = [""] * len(words)
+#     for word in words:
+#         ans[int(word[-1]) - 1] = word[:-1]
+#     return " ".join(ans)
 
-def sortSentence(s: str) -> str:
-    lst = s.split()  # [is2,sen4,This1,a3]
-    dct = {}
-    res = []
-    for i in range(len(lst)):
-        dct[int(lst[i][-1]) - 1] = lst[i][:-1]
-    # dct -> {0:This, 1:is, 2:a, 3:sen}
-    for i in range(len(lst)):
-        res.append(dct[i])
-    # res -> [This, is, a, sen]
-    result = ' '.join(res)
-    return result
 
-print(sortSentence(a))
+# 1464
+nums = [3, 4, 5, 2]
 
 
-def sortSentence2(s: str) -> str:
-    words = s.split()
-    ans = [""] * len(words)
-    for word in words:
-        ans[int(word[-1]) - 1] = word[:-1]
-    return " ".join(ans)
+# output = (5-1) * (4-1) = 12
+def maxProduct(nums):
+    max1 = 0
+    max2 = 0
+    for i in range(len(nums)):
+        if nums[i] > max1:
+            max2 = max1
+            max1 = nums[i]
+        elif nums[i] > max2:
+            max2 = nums[i]
+    return (max1 - 1) * (max2 - 1)
+
+
+# Через heapq(бинарное дерево и СД куча)
+
+import heapq
+def maxProduct(nums):
+    heap = [-1]
+    for num in nums:
+        if num > heap[0]:
+            if len(heap) == 2:
+                heapq.heappop(heap)
+            heapq.heappush(heap, num)
+
+    return (heap[0] - 1) * (heap[1] - 1)
