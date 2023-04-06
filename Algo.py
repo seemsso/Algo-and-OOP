@@ -580,31 +580,57 @@
 
 
 # 1464
-nums = [3, 4, 5, 2]
+# nums = [3, 4, 5, 2]
 
 
 # output = (5-1) * (4-1) = 12
-def maxProduct(nums):
-    max1 = 0
-    max2 = 0
-    for i in range(len(nums)):
-        if nums[i] > max1:
-            max2 = max1
-            max1 = nums[i]
-        elif nums[i] > max2:
-            max2 = nums[i]
-    return (max1 - 1) * (max2 - 1)
+# def maxProduct(nums):
+#     max1 = 0
+#     max2 = 0
+#     for i in range(len(nums)):
+#         if nums[i] > max1:
+#             max2 = max1
+#             max1 = nums[i]
+#         elif nums[i] > max2:
+#             max2 = nums[i]
+#     return (max1 - 1) * (max2 - 1)
 
 
 # Через heapq(бинарное дерево и СД куча)
 
-import heapq
-def maxProduct(nums):
-    heap = [-1]
-    for num in nums:
-        if num > heap[0]:
-            if len(heap) == 2:
-                heapq.heappop(heap)
-            heapq.heappush(heap, num)
+# import heapq
+# def maxProduct(nums):
+#     heap = [-1]
+#     for num in nums:
+#         if num > heap[0]:
+#             if len(heap) == 2:
+#                 heapq.heappop(heap)
+#             heapq.heappush(heap, num)
+#
+#     return (heap[0] - 1) * (heap[1] - 1)
 
-    return (heap[0] - 1) * (heap[1] - 1)
+
+import heapq
+
+
+def minimumOperations(nums) -> int:
+    maximum = 0
+    for i in range(len(nums)):
+        if nums[i] > maximum:
+            maximum = nums[i]
+    heapq.heapify(nums)
+    score = 0
+    cnt = 0
+    while maximum > 0:
+        nums[0] -= cnt
+        if nums[0] > 0:
+            el = heapq.heappop(nums)
+            cnt += el
+            maximum -= el
+            score += 1
+        else:
+            heapq.heappop(nums)
+    return score
+
+a = [1, 3, 5, 5, 7, 9]
+minimumOperations(a)
