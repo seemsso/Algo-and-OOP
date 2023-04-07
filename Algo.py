@@ -553,6 +553,8 @@
 
 
 """1859"""
+
+
 # a = "is2 sentence4 This1 a3"
 #
 # def sortSentence(s: str) -> str:
@@ -610,27 +612,40 @@
 #     return (heap[0] - 1) * (heap[1] - 1)
 
 
-import heapq
+# import heapq
 
 
-def minimumOperations(nums) -> int:
-    maximum = 0
-    for i in range(len(nums)):
-        if nums[i] > maximum:
-            maximum = nums[i]
-    heapq.heapify(nums)
-    score = 0
-    cnt = 0
-    while maximum > 0:
-        nums[0] -= cnt
-        if nums[0] > 0:
-            el = heapq.heappop(nums)
-            cnt += el
-            maximum -= el
-            score += 1
-        else:
-            heapq.heappop(nums)
-    return score
+# def minimumOperations(nums) -> int:
+#     maximum = 0
+#     for i in range(len(nums)):
+#         if nums[i] > maximum:
+#             maximum = nums[i]
+#     heapq.heapify(nums)
+#     score = 0
+#     cnt = 0
+#     while maximum > 0:
+#         nums[0] -= cnt
+#         if nums[0] > 0:
+#             el = heapq.heappop(nums)
+#             cnt += el
+#             maximum -= el
+#             score += 1
+#         else:
+#             heapq.heappop(nums)
+#     return score
+#
+# a = [1, 3, 5, 5, 7, 9]
+# minimumOperations(a)
 
-a = [1, 3, 5, 5, 7, 9]
-minimumOperations(a)
+
+def kWeakestRows(mat, k: int):
+    return sorted(range(len(mat)), key=lambda x: sum(mat[x]))[:k]
+
+k = 3
+mat = [[1, 1, 0, 0, 0],
+       [1, 1, 1, 1, 0],
+       [1, 0, 0, 0, 0],
+       [1, 1, 0, 0, 0],
+       [1, 1, 1, 1, 1]]
+
+print(kWeakestRows(mat, k))
