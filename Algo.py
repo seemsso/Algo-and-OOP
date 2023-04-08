@@ -680,4 +680,4 @@ def twoSum(nums, target):
         if find_sec in dct and dct[find_sec] != i:
             return [i, dct[find_sec]]
 
-print(twoSum(nums, target))
+# print(twoSum(nums, target))
