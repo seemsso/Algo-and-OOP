@@ -638,14 +638,46 @@
 # minimumOperations(a)
 
 
-def kWeakestRows(mat, k: int):
-    return sorted(range(len(mat)), key=lambda x: sum(mat[x]))[:k]
+# def kWeakestRows(mat, k: int):
+#     return sorted(range(len(mat)), key=lambda x: sum(mat[x]))[:k]
 
-k = 3
-mat = [[1, 1, 0, 0, 0],
-       [1, 1, 1, 1, 0],
-       [1, 0, 0, 0, 0],
-       [1, 1, 0, 0, 0],
-       [1, 1, 1, 1, 1]]
+# import heapq
+# def kWeakestRows(mat,k):
+#     m = len(mat)
+#     dct = dict()
+#     for i in range(m):
+#         for j in range(len(mat[i])):
+#             dct[i] = dct.get(i, 0) + mat[i][j]
+#     heap = []
+#     for k, v in dct.items():
+#         heapq.heappush(heap, (v, k))
+#     res = [heapq.heappop(heap)[1] for _ in range(k)]
+#     return res
+#
+#
+# k = 3
+# mat = [[1, 1, 0, 0, 0],
+#        [1, 1, 1, 1, 0],
+#        [1, 0, 0, 0, 0],
+#        [1, 1, 0, 0, 0],
+#        [1, 1, 1, 1, 1]]
+#
+# print(kWeakestRows(mat, k))
 
-print(kWeakestRows(mat, k))
+
+#1
+#nums = [3, 2, 4, 1, 7, 10, 5], target = 6
+#output -> [1, 2] - arr with index values for sum in target
+
+nums = [3, 2, 4, 1, 7, 10, 5]
+target = 6
+def twoSum(nums, target):
+    dct = {}
+    for i in range(len(nums)):
+        dct[nums[i]] = i
+    for i in range(len(nums)):
+        find_sec = target - nums[i]
+        if find_sec in dct and dct[find_sec] != i:
+            return [i, dct[find_sec]]
+
+print(twoSum(nums, target))
