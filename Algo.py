@@ -689,16 +689,39 @@
 
 #in [1,1,1,1]
 #out 6
-def numIdenticalPairs(nums) -> int:
-    dct = {}
-    score = 0
-    for i in range(len(nums)):
-        dct[nums[i]] = dct.get(nums[i], 0) + 1
-    for i in range(len(nums) - 1, 0, -1):
-        dct[nums[i]] -= 1
-        if dct[nums[i]]:
-            score += dct[nums[i]]
-    return score
 
-nums = [1,2,3,1,1,3]
-print(numIdenticalPairs(nums))
+
+# def numIdenticalPairs(nums) -> int:
+#     dct = {}
+#     score = 0
+#     for i in range(len(nums)):
+#         dct[nums[i]] = dct.get(nums[i], 0) + 1
+#     for i in range(len(nums) - 1, 0, -1):
+#         dct[nums[i]] -= 1
+#         if dct[nums[i]]:
+#             score += dct[nums[i]]
+#     return score
+#
+# nums = [1,2,3,1,1,3]
+# print(numIdenticalPairs(nums))
+
+
+
+#20 leetcode
+def isValid(str):
+    stack = []
+    dct = {
+        "(": ")",
+        "{": "}",
+        "[": "]"
+    }
+    for i in s:
+        if i in dct:
+            stack.append(i)
+        elif not stack or dct[stack.pop()] != i:
+            return False
+    return not stack
+
+s = "({}[])"
+
+print(isValid(s))
