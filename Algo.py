@@ -669,15 +669,36 @@
 #nums = [3, 2, 4, 1, 7, 10, 5], target = 6
 #output -> [1, 2] - arr with index values for sum in target
 
-nums = [3, 2, 4, 1, 7, 10, 5]
-target = 6
-def twoSum(nums, target):
-    dct = {}
-    for i in range(len(nums)):
-        dct[nums[i]] = i
-    for i in range(len(nums)):
-        find_sec = target - nums[i]
-        if find_sec in dct and dct[find_sec] != i:
-            return [i, dct[find_sec]]
+# nums = [3, 2, 4, 1, 7, 10, 5]
+# target = 6
+# def twoSum(nums, target):
+#     dct = {}
+#     for i in range(len(nums)):
+#         dct[nums[i]] = i
+#     for i in range(len(nums)):
+#         find_sec = target - nums[i]
+#         if find_sec in dct and dct[find_sec] != i:
+#             return [i, dct[find_sec]]
 
 # print(twoSum(nums, target))
+
+
+#1512 Number of Good Pairs
+#in [1,2,3,1,1,3]
+#out 4
+
+#in [1,1,1,1]
+#out 6
+def numIdenticalPairs(nums) -> int:
+    dct = {}
+    score = 0
+    for i in range(len(nums)):
+        dct[nums[i]] = dct.get(nums[i], 0) + 1
+    for i in range(len(nums) - 1, 0, -1):
+        dct[nums[i]] -= 1
+        if dct[nums[i]]:
+            score += dct[nums[i]]
+    return score
+
+nums = [1,2,3,1,1,3]
+print(numIdenticalPairs(nums))
