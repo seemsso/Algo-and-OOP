@@ -725,22 +725,42 @@
 # print(isValid(s))
 
 
-a = [3, 4, 4, 5, 2]
+# a = [3, 4, 4, 5, 2]
+#
+#
+# def count_sort(lst):
+#     minimum = min(lst)  # 2
+#     maximum = max(lst)  # 5
+#     k = maximum - minimum + 1  # 4
+#     count = [0] * k  # [1,1,2,1]
+#     for val in lst:
+#         count[val - minimum] += 1
+#     nowpos = 0
+#     for i in range(0, k):  # [0,1,2,3]
+#         for j in range(count[i]):
+#             lst[nowpos] = i + minimum
+#             nowpos += 1
 
 
-def count_sort(lst):
-    minimum = min(lst)  # 2
-    maximum = max(lst)  # 5
-    k = maximum - minimum + 1  # 4
-    count = [0] * k  # [1,1,2,1]
-    for val in lst:
-        count[val - minimum] += 1
-    nowpos = 0
-    for i in range(0, k):  # [0,1,2,3]
-        for j in range(count[i]):
-            lst[nowpos] = i + minimum
-            nowpos += 1
+num1 = 1351
+num2 = 3514
 
 
+def check_nums(x, y):
+    def count_num(value):
+        count = [0] * 10
+        while value > 0:
+            last_dig = value % 10
+            count[last_dig] += 1
+            value //= 10
+        return count
+
+    count_x = count_num(x)
+    count_y = count_num(y)
+    for i in range(10):
+        if count_x[i] != count_y[i]:
+            return False
+    return True
 
 
+print(check_nums(num1, num2))
