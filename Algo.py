@@ -554,7 +554,6 @@
 
 """1859"""
 
-
 # a = "is2 sentence4 This1 a3"
 #
 # def sortSentence(s: str) -> str:
@@ -665,9 +664,9 @@
 # print(kWeakestRows(mat, k))
 
 
-#1
-#nums = [3, 2, 4, 1, 7, 10, 5], target = 6
-#output -> [1, 2] - arr with index values for sum in target
+# 1
+# nums = [3, 2, 4, 1, 7, 10, 5], target = 6
+# output -> [1, 2] - arr with index values for sum in target
 
 # nums = [3, 2, 4, 1, 7, 10, 5]
 # target = 6
@@ -683,12 +682,12 @@
 # print(twoSum(nums, target))
 
 
-#1512 Number of Good Pairs
-#in [1,2,3,1,1,3]
-#out 4
+# 1512 Number of Good Pairs
+# in [1,2,3,1,1,3]
+# out 4
 
-#in [1,1,1,1]
-#out 6
+# in [1,1,1,1]
+# out 6
 
 
 # def numIdenticalPairs(nums) -> int:
@@ -706,22 +705,42 @@
 # print(numIdenticalPairs(nums))
 
 
+# 20 leetcode
+# def isValid(str):
+#     stack = []
+#     dct = {
+#         "(": ")",
+#         "{": "}",
+#         "[": "]"
+#     }
+#     for i in s:
+#         if i in dct:
+#             stack.append(i)
+#         elif not stack or dct[stack.pop()] != i:
+#             return False
+#     return not stack
+#
+# s = "({}[])"
+#
+# print(isValid(s))
 
-#20 leetcode
-def isValid(str):
-    stack = []
-    dct = {
-        "(": ")",
-        "{": "}",
-        "[": "]"
-    }
-    for i in s:
-        if i in dct:
-            stack.append(i)
-        elif not stack or dct[stack.pop()] != i:
-            return False
-    return not stack
 
-s = "({}[])"
+a = [3, 4, 4, 5, 2]
 
-print(isValid(s))
+
+def count_sort(lst):
+    minimum = min(lst)  # 2
+    maximum = max(lst)  # 5
+    k = maximum - minimum + 1  # 4
+    count = [0] * k  # [1,1,2,1]
+    for val in lst:
+        count[val - minimum] += 1
+    nowpos = 0
+    for i in range(0, k):  # [0,1,2,3]
+        for j in range(count[i]):
+            lst[nowpos] = i + minimum
+            nowpos += 1
+
+
+
+
