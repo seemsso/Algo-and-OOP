@@ -768,17 +768,52 @@
 
 # 2367 leetcode
 
-nums = [0, 1, 4, 6, 7, 10]
-diff = 3
+# nums = [0, 1, 4, 6, 7, 10]
+# diff = 3
+#
+#
+# def arithmeticTriplets(nums, diff: int) -> int:
+#     n = len(nums)
+#     res = 0
+#     dct = {}
+#     for i in range(n):
+#         dct[nums[i]] = i
+#     for i in range(n - 1, 0, -1):
+#         if (nums[i] - diff * 2) in dct and (nums[i] - diff) in dct:
+#             res += 1
+#     return res
 
 
-def arithmeticTriplets(nums, diff: int) -> int:
-    n = len(nums)
-    res = 0
+# 2006
+nums = [3,2,1,5,4,2]
+k = 2
+
+# O(nlogn)
+def countKDifference(nums, k: int) -> int:
+    nums = sorted(nums, reverse=True)
     dct = {}
-    for i in range(n):
-        dct[nums[i]] = i
-    for i in range(n - 1, 0, -1):
-        if (nums[i] - diff * 2) in dct and (nums[i] - diff) in dct:
-            res += 1
-    return res
+    result = 0
+    for i in range(len(nums)):
+        dct[nums[i]] = dct.get(nums[i], 0) + 1
+    for i in range(len(nums)):
+        if (nums[i] - k) in dct:
+            cur = dct.pop(nums[i], 0) * dct[nums[i] - k]
+            result += cur
+    return result
+
+
+print(countKDifference(nums, k))
+
+# O(n)
+def countKDifference2(nums, k: int) -> int:
+    dct = {}
+    result = 0
+    for i in nums:
+        if i + k in dct:
+            result += dct[i + k]
+        if i - k in dct:
+            result += dct[i - k]
+        dct[i] = dct.get(i, 0) + 1
+    return result
+
+print(countKDifference2(nums, k))
