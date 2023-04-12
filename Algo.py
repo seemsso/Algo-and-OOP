@@ -742,25 +742,43 @@
 #             nowpos += 1
 
 
-num1 = 1351
-num2 = 3514
+# num1 = 1351
+# num2 = 3514
+#
+#
+# def check_nums(x, y):
+#     def count_num(value):
+#         count = [0] * 10
+#         while value > 0:
+#             last_dig = value % 10
+#             count[last_dig] += 1
+#             value //= 10
+#         return count
+#
+#     count_x = count_num(x)
+#     count_y = count_num(y)
+#     for i in range(10):
+#         if count_x[i] != count_y[i]:
+#             return False
+#     return True
+#
+#
+# print(check_nums(num1, num2))
 
 
-def check_nums(x, y):
-    def count_num(value):
-        count = [0] * 10
-        while value > 0:
-            last_dig = value % 10
-            count[last_dig] += 1
-            value //= 10
-        return count
+# 2367 leetcode
 
-    count_x = count_num(x)
-    count_y = count_num(y)
-    for i in range(10):
-        if count_x[i] != count_y[i]:
-            return False
-    return True
+nums = [0, 1, 4, 6, 7, 10]
+diff = 3
 
 
-print(check_nums(num1, num2))
+def arithmeticTriplets(nums, diff: int) -> int:
+    n = len(nums)
+    res = 0
+    dct = {}
+    for i in range(n):
+        dct[nums[i]] = i
+    for i in range(n - 1, 0, -1):
+        if (nums[i] - diff * 2) in dct and (nums[i] - diff) in dct:
+            res += 1
+    return res
