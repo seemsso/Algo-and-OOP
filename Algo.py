@@ -785,35 +785,58 @@
 
 
 # 2006
-nums = [3,2,1,5,4,2]
-k = 2
+# nums = [3,2,1,5,4,2]
+# k = 2
+#
+# # O(nlogn)
+# def countKDifference(nums, k: int) -> int:
+#     nums = sorted(nums, reverse=True)
+#     dct = {}
+#     result = 0
+#     for i in range(len(nums)):
+#         dct[nums[i]] = dct.get(nums[i], 0) + 1
+#     for i in range(len(nums)):
+#         if (nums[i] - k) in dct:
+#             cur = dct.pop(nums[i], 0) * dct[nums[i] - k]
+#             result += cur
+#     return result
+#
+#
+# print(countKDifference(nums, k))
+#
+# # O(n)
+# def countKDifference2(nums, k: int) -> int:
+#     dct = {}
+#     result = 0
+#     for i in nums:
+#         if i + k in dct:
+#             result += dct[i + k]
+#         if i - k in dct:
+#             result += dct[i - k]
+#         dct[i] = dct.get(i, 0) + 1
+#     return result
+#
+# print(countKDifference2(nums, k))
 
-# O(nlogn)
-def countKDifference(nums, k: int) -> int:
-    nums = sorted(nums, reverse=True)
-    dct = {}
-    result = 0
-    for i in range(len(nums)):
-        dct[nums[i]] = dct.get(nums[i], 0) + 1
-    for i in range(len(nums)):
-        if (nums[i] - k) in dct:
-            cur = dct.pop(nums[i], 0) * dct[nums[i] - k]
-            result += cur
+
+#561
+nums1 = [1,4,3,2]
+#out = 4 min(1, 2) + min(3, 4)
+
+nums2 = [6,2,6,5,1,2]
+#out = 9 min(1, 2) + min(2, 5) + min(6, 6)
+def arrayPairSum(nums) -> int:
+    # nums = [1, 2, 3, 5, 7, 7, 8, 8, 10, 10] -> 1 + 3 + 7 + 8 + 10 = 29
+    counter = len(nums) // 2
+    if counter > 1:
+        nums.sort()
+        result = nums[0] + nums[-2]  # 1 + 10 = 11
+    else:
+        return min(nums)
+    if counter > 2:
+        for i in range(2, len(nums) - 2, 2):  # +3 +7 +8
+            result += nums[i]
     return result
 
-
-print(countKDifference(nums, k))
-
-# O(n)
-def countKDifference2(nums, k: int) -> int:
-    dct = {}
-    result = 0
-    for i in nums:
-        if i + k in dct:
-            result += dct[i + k]
-        if i - k in dct:
-            result += dct[i - k]
-        dct[i] = dct.get(i, 0) + 1
-    return result
-
-print(countKDifference2(nums, k))
+print(arrayPairSum(nums1))
+print(arrayPairSum(nums2))
