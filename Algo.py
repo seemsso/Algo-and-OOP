@@ -819,24 +819,58 @@
 # print(countKDifference2(nums, k))
 
 
-#561
-nums1 = [1,4,3,2]
-#out = 4 min(1, 2) + min(3, 4)
+# 561
+# nums1 = [1,4,3,2]
+# #out = 4 min(1, 2) + min(3, 4)
+#
+# nums2 = [6,2,6,5,1,2]
+# #out = 9 min(1, 2) + min(2, 5) + min(6, 6)
+# def arrayPairSum(nums) -> int:
+#     # nums = [1, 2, 3, 5, 7, 7, 8, 8, 10, 10] -> 1 + 3 + 7 + 8 + 10 = 29
+#     counter = len(nums) // 2
+#     if counter > 1:
+#         nums.sort()
+#         result = nums[0] + nums[-2]  # 1 + 10 = 11
+#     else:
+#         return min(nums)
+#     if counter > 2:
+#         for i in range(2, len(nums) - 2, 2):  # +3 +7 +8
+#             result += nums[i]
+#     return result
+#
+# print(arrayPairSum(nums1))
+# print(arrayPairSum(nums2))
 
-nums2 = [6,2,6,5,1,2]
-#out = 9 min(1, 2) + min(2, 5) + min(6, 6)
-def arrayPairSum(nums) -> int:
-    # nums = [1, 2, 3, 5, 7, 7, 8, 8, 10, 10] -> 1 + 3 + 7 + 8 + 10 = 29
-    counter = len(nums) // 2
-    if counter > 1:
-        nums.sort()
-        result = nums[0] + nums[-2]  # 1 + 10 = 11
-    else:
-        return min(nums)
-    if counter > 2:
-        for i in range(2, len(nums) - 2, 2):  # +3 +7 +8
-            result += nums[i]
-    return result
 
-print(arrayPairSum(nums1))
-print(arrayPairSum(nums2))
+# 1684
+allowed = "ab"
+words = ["ad", "bd", "aaab", "baa", "badab"]
+
+
+# word in allowed
+# out = 2 ['aaab', 'baa']
+
+#Затратно по памяти,создаем set для каждого элемента в массиве words
+def countConsistentStrings(allowed: str, words) -> int:
+    check = set(allowed)
+    score = 0
+    for el in words:
+        if check >= set(el):
+            score += 1
+    return score
+
+
+print(countConsistentStrings(allowed, words))
+
+
+#better -> O(n*k), где k- длина каждой строчки
+def countConsistentStrings2(allowed: str, words) -> int:
+    check = set(allowed)
+    score = 0
+    for word in words:
+        for i in word:
+            if i not in check:
+                score += 1
+    return len(words) - score
+
+print(countConsistentStrings2(allowed, words))
