@@ -876,7 +876,7 @@
 # print(countConsistentStrings2(allowed, words))
 
 
-#BINARY SEACRH
+# BINARY SEACRH
 # a = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 # target = 3
 #
@@ -909,30 +909,58 @@
 # print(targetIndices(a, target))
 
 
+# 1351
+# grid = [[3,-1,-3,-3,-3],[2,2,3,3,-3],[1,-2,-3,-3,-3],[0,-3,-3,-3,-3]]
+#
+# def countNegatives(grid) -> int:
+#     n = len(grid[0])
+#     def bin_search(arr):
+#         l, r = -1, n
+#         if r > 1:
+#             while r > l + 1:
+#                 mid = abs(l + r) // 2
+#                 if arr[mid] < 0:
+#                     r = mid
+#                     if r <= 0:
+#                         return n
+#                 else:
+#                     l = mid
+#                     if l > n:
+#                         return 0
+#             return n - r
+#         elif r == 1 and arr[0] < 0:
+#             return n
+#         else:
+#             return 0
+#
+#     return sum([bin_search(arr) for arr in grid])
+# print(countNegatives(grid))
 
-#1351
-grid = [[3,-1,-3,-3,-3],[2,2,3,3,-3],[1,-2,-3,-3,-3],[0,-3,-3,-3,-3]]
 
-def countNegatives(grid) -> int:
-    n = len(grid[0])
-    def bin_search(arr):
-        l, r = -1, n
-        if r > 1:
-            while r > l + 1:
-                mid = abs(l + r) // 2
-                if arr[mid] < 0:
-                    r = mid
-                    if r <= 0:
-                        return n
-                else:
-                    l = mid
-                    if l > n:
-                        return 0
-            return n - r
-        elif r == 1 and arr[0] < 0:
-            return n
+# 9 without str()
+a = 101  # palindrome True/False
+
+
+def isPalindrome(x: int) -> bool:
+    hashmap = {}
+    if x < 0:
+        return False
+    else:
+        cur = 0
+        while x:
+            last = x % 10
+            hashmap[cur] = last
+            cur += 1
+            x //= 10
+    start = 0
+
+    while cur > start:
+        if hashmap[start] == hashmap[cur - 1]:
+            start += 1
+            cur -= 1
         else:
-            return 0
+            return False
+    return True
 
-    return sum([bin_search(arr) for arr in grid])
-print(countNegatives(grid))
+
+print(isPalindrome(a))
