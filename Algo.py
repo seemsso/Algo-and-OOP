@@ -843,34 +843,67 @@
 
 
 # 1684
-allowed = "ab"
-words = ["ad", "bd", "aaab", "baa", "badab"]
+# allowed = "ab"
+# words = ["ad", "bd", "aaab", "baa", "badab"]
+#
+#
+# # word in allowed
+# # out = 2 ['aaab', 'baa']
+#
+# #Затратно по памяти,создаем set для каждого элемента в массиве words
+# def countConsistentStrings(allowed: str, words) -> int:
+#     check = set(allowed)
+#     score = 0
+#     for el in words:
+#         if check >= set(el):
+#             score += 1
+#     return score
+#
+#
+# print(countConsistentStrings(allowed, words))
+#
+#
+# #better -> O(n*k), где k- длина каждой строчки
+# def countConsistentStrings2(allowed: str, words) -> int:
+#     check = set(allowed)
+#     score = 0
+#     for word in words:
+#         for i in word:
+#             if i not in check:
+#                 score += 1
+#     return len(words) - score
+#
+# print(countConsistentStrings2(allowed, words))
 
 
-# word in allowed
-# out = 2 ['aaab', 'baa']
+#BINARY SEACRH
+a = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+target = 3
 
-#Затратно по памяти,создаем set для каждого элемента в массиве words
-def countConsistentStrings(allowed: str, words) -> int:
-    check = set(allowed)
-    score = 0
-    for el in words:
-        if check >= set(el):
-            score += 1
-    return score
+#bug theme
+#2089
+def targetIndices(nums, target):
+    nums.sort()
+    l = -1
+    r = len(nums)
+    if r > 1:
+        result = []
+        while r > l + 1:  # [1, 2, 4, 5, 6]  # target 2
+            mid = (l + r) // 2
+            if nums[mid] >= target:
+                r = mid  # idx2 -> 4
+            else:
+                l = mid
+        if r < len(nums) and nums[r] == target:
+            result.append(r)
+            while r + 1 < len(nums) and nums[r] == nums[r + 1]:
+                result.append(r + 1)
+                r += 1
+        return result
+    else:
+        if nums[0] == target:
+            return [0]
+        else:
+            return []
 
-
-print(countConsistentStrings(allowed, words))
-
-
-#better -> O(n*k), где k- длина каждой строчки
-def countConsistentStrings2(allowed: str, words) -> int:
-    check = set(allowed)
-    score = 0
-    for word in words:
-        for i in word:
-            if i not in check:
-                score += 1
-    return len(words) - score
-
-print(countConsistentStrings2(allowed, words))
+print(targetIndices(a, target))
