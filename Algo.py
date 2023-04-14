@@ -877,33 +877,62 @@
 
 
 #BINARY SEACRH
-a = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-target = 3
+# a = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+# target = 3
+#
+# #bug theme
+# #2089
+# def targetIndices(nums, target):
+#     nums.sort()
+#     l = -1
+#     r = len(nums)
+#     if r > 1:
+#         result = []
+#         while r > l + 1:  # [1, 2, 4, 5, 6]  # target 2
+#             mid = (l + r) // 2
+#             if nums[mid] >= target:
+#                 r = mid  # idx2 -> 4
+#             else:
+#                 l = mid
+#         if r < len(nums) and nums[r] == target:
+#             result.append(r)
+#             while r + 1 < len(nums) and nums[r] == nums[r + 1]:
+#                 result.append(r + 1)
+#                 r += 1
+#         return result
+#     else:
+#         if nums[0] == target:
+#             return [0]
+#         else:
+#             return []
+#
+# print(targetIndices(a, target))
 
-#bug theme
-#2089
-def targetIndices(nums, target):
-    nums.sort()
-    l = -1
-    r = len(nums)
-    if r > 1:
-        result = []
-        while r > l + 1:  # [1, 2, 4, 5, 6]  # target 2
-            mid = (l + r) // 2
-            if nums[mid] >= target:
-                r = mid  # idx2 -> 4
-            else:
-                l = mid
-        if r < len(nums) and nums[r] == target:
-            result.append(r)
-            while r + 1 < len(nums) and nums[r] == nums[r + 1]:
-                result.append(r + 1)
-                r += 1
-        return result
-    else:
-        if nums[0] == target:
-            return [0]
+
+
+#1351
+grid = [[3,-1,-3,-3,-3],[2,2,3,3,-3],[1,-2,-3,-3,-3],[0,-3,-3,-3,-3]]
+
+def countNegatives(grid) -> int:
+    n = len(grid[0])
+    def bin_search(arr):
+        l, r = -1, n
+        if r > 1:
+            while r > l + 1:
+                mid = abs(l + r) // 2
+                if arr[mid] < 0:
+                    r = mid
+                    if r <= 0:
+                        return n
+                else:
+                    l = mid
+                    if l > n:
+                        return 0
+            return n - r
+        elif r == 1 and arr[0] < 0:
+            return n
         else:
-            return []
+            return 0
 
-print(targetIndices(a, target))
+    return sum([bin_search(arr) for arr in grid])
+print(countNegatives(grid))
