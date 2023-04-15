@@ -980,60 +980,84 @@
 
 
 """2529"""
-#check left positive idx
-#check left zero idx
-#check max(score positive, score negative)
+# check left positive idx
+# check left zero idx
+# check max(score positive, score negative)
 
 
-nums = [-2,-1,-1,1,2,3]
-#res = 3 -> because 3negative and 3positive
-def maximumCount(nums) -> int:
-    def bin_search_positive(x):
-        l, r = -1, len(x)
-        while r > l + 1:
-            mid = (l + r) // 2
-            if x[mid] > 0:
-                r = mid
-                if r < 0:
-                    return 0
-            else:
-                l = mid
-                if l > n:
-                    return -1
-        return r
+# nums = [-2,-1,-1,1,2,3]
+# #res = 3 -> because 3negative and 3positive
+# def maximumCount(nums) -> int:
+#     def bin_search_positive(x):
+#         l, r = -1, len(x)
+#         while r > l + 1:
+#             mid = (l + r) // 2
+#             if x[mid] > 0:
+#                 r = mid
+#                 if r < 0:
+#                     return 0
+#             else:
+#                 l = mid
+#                 if l > n:
+#                     return -1
+#         return r
+#
+#     def bin_search_zero(x):
+#         l, r = -1, plus_idx
+#         while r > l + 1:
+#             mid = (l + r) // 2
+#             if x[mid] == 0:
+#                 r = mid
+#                 if r < 0:
+#                     return 0
+#             else:
+#                 l = mid
+#                 if l > n:
+#                     return -1
+#         return r
+#
+#     n = len(nums)
+#     if n > 1:
+#         plus_idx = bin_search_positive(nums)
+#         zero_idx = bin_search_zero(nums)
+#         if plus_idx == -1:
+#             return n
+#         elif zero_idx == -1:
+#             plus = n - plus_idx
+#             return plus
+#         else:
+#             plus = n - plus_idx
+#             zero = plus_idx - zero_idx
+#             neg = n - (plus + zero)
+#             return max(plus, neg)
+#     else:
+#         if nums[0]:
+#             return 1
+#         else:
+#             return 0
+#
+# print(maximumCount(nums))
 
-    def bin_search_zero(x):
-        l, r = -1, plus_idx
-        while r > l + 1:
-            mid = (l + r) // 2
-            if x[mid] == 0:
-                r = mid
-                if r < 0:
-                    return 0
-            else:
-                l = mid
-                if l > n:
-                    return -1
-        return r
 
-    n = len(nums)
-    if n > 1:
-        plus_idx = bin_search_positive(nums)
-        zero_idx = bin_search_zero(nums)
-        if plus_idx == -1:
-            return n
-        elif zero_idx == -1:
-            plus = n - plus_idx
-            return plus
-        else:
-            plus = n - plus_idx
-            zero = plus_idx - zero_idx
-            neg = n - (plus + zero)
-            return max(plus, neg)
-    else:
-        if nums[0]:
-            return 1
-        else:
-            return 0
+"""349"""
+nums1 = [4, 9, 5]
+nums2 = [9, 4, 9, 8, 4]
+#need print intersection
 
-print(maximumCount(nums))
+def intersection(nums1, nums2):
+    dct = {}
+    res = set()
+    for i in range(len(nums1)):
+        dct[nums1[i]] = i
+    for i in range(len(nums2)):
+        if nums2[i] in dct:
+            pnt1 = dct[nums2[i]]
+            pnt2 = i
+            while (pnt1 < len(nums1) and pnt2 < len(nums2)) and nums1[pnt1] == nums2[pnt2]:
+                res.add(nums1[pnt1])
+                pnt1 += 1
+                pnt2 += 1
+    return list(res)
+
+
+print(intersection(nums1, nums2))
