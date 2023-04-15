@@ -938,29 +938,102 @@
 
 
 # 9 without str()
-a = 101  # palindrome True/False
+# a = 101  # palindrome True/False
+#
+#
+# def isPalindrome(x: int) -> bool:
+#     hashmap = {}
+#     if x < 0:
+#         return False
+#     else:
+#         cur = 0
+#         while x:
+#             last = x % 10
+#             hashmap[cur] = last
+#             cur += 1
+#             x //= 10
+#     start = 0
+#
+#     while cur > start:
+#         if hashmap[start] == hashmap[cur - 1]:
+#             start += 1
+#             cur -= 1
+#         else:
+#             return False
+#     return True
+#
+#
+# print(isPalindrome(a))
+
+# a = 123
+# def isPalindrome(x: int) -> bool:
+#     if x < 0 or (x != 0 and not x % 10):
+#         return False
+#     else:
+#         rev = 0
+#         while x > rev:
+#             rev = rev * 10 + x % 10
+#             x //= 10
+#         return (x == rev or x == rev // 10)
+#
+# print(isPalindrome(a))
 
 
-def isPalindrome(x: int) -> bool:
-    hashmap = {}
-    if x < 0:
-        return False
-    else:
-        cur = 0
-        while x:
-            last = x % 10
-            hashmap[cur] = last
-            cur += 1
-            x //= 10
-    start = 0
+"""2529"""
+#check left positive idx
+#check left zero idx
+#check max(score positive, score negative)
 
-    while cur > start:
-        if hashmap[start] == hashmap[cur - 1]:
-            start += 1
-            cur -= 1
+
+nums = [-2,-1,-1,1,2,3]
+#res = 3 -> because 3negative and 3positive
+def maximumCount(nums) -> int:
+    def bin_search_positive(x):
+        l, r = -1, len(x)
+        while r > l + 1:
+            mid = (l + r) // 2
+            if x[mid] > 0:
+                r = mid
+                if r < 0:
+                    return 0
+            else:
+                l = mid
+                if l > n:
+                    return -1
+        return r
+
+    def bin_search_zero(x):
+        l, r = -1, plus_idx
+        while r > l + 1:
+            mid = (l + r) // 2
+            if x[mid] == 0:
+                r = mid
+                if r < 0:
+                    return 0
+            else:
+                l = mid
+                if l > n:
+                    return -1
+        return r
+
+    n = len(nums)
+    if n > 1:
+        plus_idx = bin_search_positive(nums)
+        zero_idx = bin_search_zero(nums)
+        if plus_idx == -1:
+            return n
+        elif zero_idx == -1:
+            plus = n - plus_idx
+            return plus
         else:
-            return False
-    return True
+            plus = n - plus_idx
+            zero = plus_idx - zero_idx
+            neg = n - (plus + zero)
+            return max(plus, neg)
+    else:
+        if nums[0]:
+            return 1
+        else:
+            return 0
 
-
-print(isPalindrome(a))
+print(maximumCount(nums))
