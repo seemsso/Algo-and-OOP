@@ -1059,5 +1059,9 @@ def intersection(nums1, nums2):
                 pnt2 += 1
     return list(res)
 
+def intersection2(nums1, nums2):
+    return list(set(nums1) & set(nums2))
+
 
 print(intersection(nums1, nums2))
+print(intersection2(nums1, nums2))
