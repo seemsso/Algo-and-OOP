@@ -1040,28 +1040,63 @@
 
 
 """349"""
-nums1 = [4, 9, 5]
-nums2 = [9, 4, 9, 8, 4]
-#need print intersection
+# nums1 = [4, 9, 5]
+# nums2 = [9, 4, 9, 8, 4]
+# #need print intersection
+#
+# def intersection(nums1, nums2):
+#     dct = {}
+#     res = set()
+#     for i in range(len(nums1)):
+#         dct[nums1[i]] = i
+#     for i in range(len(nums2)):
+#         if nums2[i] in dct:
+#             pnt1 = dct[nums2[i]]
+#             pnt2 = i
+#             while (pnt1 < len(nums1) and pnt2 < len(nums2)) and nums1[pnt1] == nums2[pnt2]:
+#                 res.add(nums1[pnt1])
+#                 pnt1 += 1
+#                 pnt2 += 1
+#     return list(res)
+#
+# def intersection2(nums1, nums2):
+#     return list(set(nums1) & set(nums2))
+#
+#
+# print(intersection(nums1, nums2))
+# print(intersection2(nums1, nums2))
 
-def intersection(nums1, nums2):
-    dct = {}
-    res = set()
-    for i in range(len(nums1)):
-        dct[nums1[i]] = i
-    for i in range(len(nums2)):
-        if nums2[i] in dct:
-            pnt1 = dct[nums2[i]]
-            pnt2 = i
-            while (pnt1 < len(nums1) and pnt2 < len(nums2)) and nums1[pnt1] == nums2[pnt2]:
-                res.add(nums1[pnt1])
-                pnt1 += 1
-                pnt2 += 1
-    return list(res)
 
-def intersection2(nums1, nums2):
-    return list(set(nums1) & set(nums2))
-
-
-print(intersection(nums1, nums2))
-print(intersection2(nums1, nums2))
+# a = [1, 2, 3, 5, 6, 6]
+# target = 4
+# l = 0
+#
+# def lbin(l, r, arr, tar):
+#     while r > l:
+#         m = (l + r) // 2
+#         if arr[m] >= tar:
+#             r = m
+#         else:
+#             l = m + 1
+#     if r == len(arr) or (r < len(arr) and arr[r] != tar):
+#         return -1
+#     else:
+#         return l
+#
+#
+# print(lbin(0, len(a), a, target))
+#
+#
+# def rbin(l, r, arr, tar):
+#     while r > l:
+#         m = (l + r + 1) // 2
+#         if m < len(arr) and arr[m] <= tar:
+#             l = m
+#         else:
+#             r = m - 1
+#     if tar != arr[r]:
+#         return -1
+#     else:
+#         return r
+#
+# print(rbin(0, len(a), a, target))
