@@ -1100,3 +1100,27 @@
 #         return r
 #
 # print(rbin(0, len(a), a, target))
+
+
+"""Stack and queue"""
+
+#1614 stack
+s = "(1+(2*3)+((8)/4))+1"
+#Out -> 3
+#return nesting depth ()()(()) or smth
+def maxDepth(s: str) -> int:
+    stack = []
+    max = 0
+    cur = 0
+    for i in s:
+        if i == '(':
+            stack.append(i)
+            cur += 1
+            if cur > max:
+                max = cur
+        elif i == ')':
+            stack.pop()
+            cur -= 1
+    return max
+
+print(maxDepth(s))
