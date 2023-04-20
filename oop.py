@@ -501,55 +501,93 @@
 # res = ld.parse_format(s, Factory())
 
 
-"""classmethod and @staticmethod"""
+# """classmethod and @staticmethod"""
+#
+# from string import ascii_lowercase, digits
+#
+#
+# class TextInput:
+#     CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
+#     CHARS_CORRECT = CHARS + CHARS.upper() + digits
+#
+#     def __init__(self, name, size=10):
+#         self.check_name(name)
+#         self.name = name
+#         self.size = size
+#
+#     def get_html(self):
+#         return f"<p class='login'>{self.name}: <input type='text' size={self.size} />"
+#
+#     @classmethod
+#     def check_name(cls, name):
+#         if type(name) != str or not (3 <= len(name) <= 50) or not(set(name) < set(cls.CHARS_CORRECT)):
+#             raise ValueError("некорректное поле name")
+#
+#
+# class PasswordInput:
+#     CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
+#     CHARS_CORRECT = CHARS + CHARS.upper() + digits
+#
+#     def __init__(self, name, size=10):
+#         self.check_name(name)
+#         self.name = name
+#         self.size = size
+#
+#     def get_html(self):
+#         return f"<p class='password'>{self.name}: <input type='text' size={self.size} />"
+#
+#     @classmethod
+#     def check_name(cls, name):
+#         if type(name) != str or not (3 <= len(name) <= 50) or not (set(name) < set(cls.CHARS_CORRECT)):
+#             raise ValueError("некорректное поле name")
+#
+#
+# class FormLogin:
+#     def __init__(self, lgn, psw):
+#         self.login = lgn
+#         self.password = psw
+#
+#     def render_template(self):
+#         return "\n".join(['<form action="#">', self.login.get_html(), self.password.get_html(), '</form>'])
+#
+#
+# login = FormLogin(TextInput("Логин"), PasswordInput("Пароль"))
+# html = login.render_template()
 
-from string import ascii_lowercase, digits
+
+"""Access public,private,protected"""
 
 
-class TextInput:
-    CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
-    CHARS_CORRECT = CHARS + CHARS.upper() + digits
+class Clock:
+    cur = []
 
-    def __init__(self, name, size=10):
-        self.check_name(name)
-        self.name = name
-        self.size = size
+    def __init__(self, time=0):
+        if self.cur:
+            el = len(self.cur) - 1
+            time = el
+        self.__time = time
+        self.cur.append(time)
 
-    def get_html(self):
-        return f"<p class='login'>{self.name}: <input type='text' size={self.size} />"
+    def set_time(self, tm):
+        if self.__check_time(tm):
+            self.__time = tm
+
+    def get_time(self):
+        return self.__time
 
     @classmethod
-    def check_name(cls, name):
-        if type(name) != str or not (3 <= len(name) <= 50) or not(set(name) < set(cls.CHARS_CORRECT)):
-            raise ValueError("некорректное поле name")
+    def __check_time(cls, tm):
+        if type(tm) == int and (0 <= tm < 100_000):
+            return True
+        else:
+            return False
 
 
-class PasswordInput:
-    CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя " + ascii_lowercase
-    CHARS_CORRECT = CHARS + CHARS.upper() + digits
-
-    def __init__(self, name, size=10):
-        self.check_name(name)
-        self.name = name
-        self.size = size
-
-    def get_html(self):
-        return f"<p class='password'>{self.name}: <input type='text' size={self.size} />"
-
-    @classmethod
-    def check_name(cls, name):
-        if type(name) != str or not (3 <= len(name) <= 50) or not (set(name) < set(cls.CHARS_CORRECT)):
-            raise ValueError("некорректное поле name")
-
-
-class FormLogin:
-    def __init__(self, lgn, psw):
-        self.login = lgn
-        self.password = psw
-
-    def render_template(self):
-        return "\n".join(['<form action="#">', self.login.get_html(), self.password.get_html(), '</form>'])
-
-
-login = FormLogin(TextInput("Логин"), PasswordInput("Пароль"))
-html = login.render_template()
+clock = Clock(4530)
+clock.set_time(15)
+print(clock.get_time())  # 15
+clock.set_time(100000)
+clock.set_time(-1)
+clock.set_time('2')
+clock.set_time(0.1)
+print(clock.get_time())
