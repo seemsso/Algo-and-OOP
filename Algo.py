@@ -1105,22 +1105,73 @@
 """Stack and queue"""
 
 #1614 stack
-s = "(1+(2*3)+((8)/4))+1"
-#Out -> 3
-#return nesting depth ()()(()) or smth
-def maxDepth(s: str) -> int:
+# s = "(1+(2*3)+((8)/4))+1"
+#
+#
+# # Out -> 3
+# # return nesting depth ()()(()) or smth
+# def maxDepth(s: str) -> int:
+#     stack = []
+#     max = 0
+#     cur = 0
+#     for i in s:
+#         if i == '(':
+#             stack.append(i)
+#             cur += 1
+#             if cur > max:
+#                 max = cur
+#         elif i == ')':
+#             stack.pop()
+#             cur -= 1
+#     return max
+#
+#
+# print(maxDepth(s))
+
+
+s = "(()())(())(()(()))"
+
+# def removeOuterParentheses(s: str) -> str:
+#     stack = []
+#     l = 0
+#     res = []
+#     for i in s:
+#         if i == '(':
+#             stack.append(i)
+#             l += 1
+#         elif l > 1:
+#             res.append(stack.pop())
+#             l -= 1
+#             if l == 1:
+#                 res.append(')')
+#         elif not not stack:
+#             stack.pop()
+#             l -= 1
+#         if l > 1 and i == ')':
+#             res.append(i)
+#     return ''.join(res)
+
+#1021
+def removeOuterParentheses(s: str) -> str:
     stack = []
-    max = 0
-    cur = 0
+    l = 0
+    res = []
     for i in s:
-        if i == '(':
+        if l == 0 and i == '(':
             stack.append(i)
-            cur += 1
-            if cur > max:
-                max = cur
+            l += 1
+        elif l > 0 and i == '(':
+            res.append(i)
+            l += 1
+        elif l > 1 and i == ')':
+            res.append(i)
+            l -= 1
         elif i == ')':
             stack.pop()
-            cur -= 1
-    return max
+            l -= 1
 
-print(maxDepth(s))
+    return ''.join(res)
+
+
+
+print(removeOuterParentheses(s))
