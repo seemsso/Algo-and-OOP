@@ -1104,7 +1104,7 @@
 
 """Stack and queue"""
 
-#1614 stack
+# 1614 stack
 # s = "(1+(2*3)+((8)/4))+1"
 #
 #
@@ -1131,6 +1131,7 @@
 
 s = "(()())(())(()(()))"
 
+
 # def removeOuterParentheses(s: str) -> str:
 #     stack = []
 #     l = 0
@@ -1151,7 +1152,7 @@ s = "(()())(())(()(()))"
 #             res.append(i)
 #     return ''.join(res)
 
-#1021
+# 1021
 def removeOuterParentheses(s: str) -> str:
     stack = []
     l = 0
@@ -1173,5 +1174,27 @@ def removeOuterParentheses(s: str) -> str:
     return ''.join(res)
 
 
-
 # print(removeOuterParentheses(s))
+
+
+#1475
+prices = [8,4,6,2,3]
+#out -> [4,2,4,2,3]
+def finalPrices(prices):
+    pnt1 = 0
+    pnt2 = 1
+    while pnt2 < len(prices):
+        if prices[pnt1] >= prices[pnt2]:
+            prices[pnt1] -= prices[pnt2]
+        else:
+            cur = pnt2
+            while pnt2 < len(prices) and prices[pnt1] < prices[pnt2]:
+                pnt2 += 1
+            if pnt2 < len(prices) and prices[pnt1] >= prices[pnt2]:
+                prices[pnt1] -= prices[pnt2]
+            pnt2 = cur
+        pnt1 += 1
+        pnt2 += 1
+    return prices
+
+print(finalPrices(prices))
