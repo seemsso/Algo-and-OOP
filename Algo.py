@@ -1129,7 +1129,7 @@
 # print(maxDepth(s))
 
 
-s = "(()())(())(()(()))"
+# s = "(()())(())(()(()))"
 
 
 # def removeOuterParentheses(s: str) -> str:
@@ -1153,48 +1153,69 @@ s = "(()())(())(()(()))"
 #     return ''.join(res)
 
 # 1021
-def removeOuterParentheses(s: str) -> str:
-    stack = []
-    l = 0
-    res = []
-    for i in s:
-        if l == 0 and i == '(':
-            stack.append(i)
-            l += 1
-        elif l > 0 and i == '(':
-            res.append(i)
-            l += 1
-        elif l > 1 and i == ')':
-            res.append(i)
-            l -= 1
-        elif i == ')':
-            stack.pop()
-            l -= 1
-
-    return ''.join(res)
+# def removeOuterParentheses(s: str) -> str:
+#     stack = []
+#     l = 0
+#     res = []
+#     for i in s:
+#         if l == 0 and i == '(':
+#             stack.append(i)
+#             l += 1
+#         elif l > 0 and i == '(':
+#             res.append(i)
+#             l += 1
+#         elif l > 1 and i == ')':
+#             res.append(i)
+#             l -= 1
+#         elif i == ')':
+#             stack.pop()
+#             l -= 1
+#
+#     return ''.join(res)
 
 
 # print(removeOuterParentheses(s))
 
 
-#1475
-prices = [8,4,6,2,3]
-#out -> [4,2,4,2,3]
-def finalPrices(prices):
+# 1475
+# prices = [8,4,6,2,3]
+# out -> [4,2,4,2,3]
+# def finalPrices(prices):
+#     pnt1 = 0
+#     pnt2 = 1
+#     while pnt2 < len(prices):
+#         if prices[pnt1] >= prices[pnt2]:
+#             prices[pnt1] -= prices[pnt2]
+#         else:
+#             cur = pnt2
+#             while pnt2 < len(prices) and prices[pnt1] < prices[pnt2]:
+#                 pnt2 += 1
+#             if pnt2 < len(prices) and prices[pnt1] >= prices[pnt2]:
+#                 prices[pnt1] -= prices[pnt2]
+#             pnt2 = cur
+#         pnt1 += 1
+#         pnt2 += 1
+#     return prices
+#
+# print(finalPrices(prices))
+
+# unique elements in arr
+nums = [0, 0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+
+
+def set_unique(lst):
     pnt1 = 0
     pnt2 = 1
-    while pnt2 < len(prices):
-        if prices[pnt1] >= prices[pnt2]:
-            prices[pnt1] -= prices[pnt2]
+    if not lst or len(lst) == 1:
+        return lst
+    while pnt2 < len(lst):
+        if lst[pnt1] == lst[pnt2]:
+            pnt2 += 1
         else:
-            cur = pnt2
-            while pnt2 < len(prices) and prices[pnt1] < prices[pnt2]:
-                pnt2 += 1
-            if pnt2 < len(prices) and prices[pnt1] >= prices[pnt2]:
-                prices[pnt1] -= prices[pnt2]
-            pnt2 = cur
-        pnt1 += 1
-        pnt2 += 1
-    return prices
+            lst[pnt1 + 1] = lst[pnt2]
+            pnt1 += 1
+            pnt2 += 1
+    return lst[:pnt1 + 1]
 
-print(finalPrices(prices))
+
+print(set_unique(nums))
