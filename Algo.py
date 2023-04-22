@@ -1200,22 +1200,52 @@
 # print(finalPrices(prices))
 
 # unique elements in arr
-nums = [0, 0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+# nums = [0, 0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+#
+#
+# def set_unique(lst):
+#     pnt1 = 0
+#     pnt2 = 1
+#     if not lst or len(lst) == 1:
+#         return lst
+#     while pnt2 < len(lst):
+#         if lst[pnt1] == lst[pnt2]:
+#             pnt2 += 1
+#         else:
+#             lst[pnt1 + 1] = lst[pnt2]
+#             pnt1 += 1
+#             pnt2 += 1
+#     return lst[:pnt1 + 1]
+#
+#
+# print(set_unique(nums))
 
 
-def set_unique(lst):
-    pnt1 = 0
-    pnt2 = 1
-    if not lst or len(lst) == 1:
-        return lst
-    while pnt2 < len(lst):
-        if lst[pnt1] == lst[pnt2]:
-            pnt2 += 1
-        else:
-            lst[pnt1 + 1] = lst[pnt2]
-            pnt1 += 1
-            pnt2 += 1
-    return lst[:pnt1 + 1]
+#2574
+nums = [1, 3, 10, 5, 7]
 
 
-print(set_unique(nums))
+def leftRigthDifference(nums):
+    if len(nums) == 1:
+        return [0]
+    elif len(nums) == 2:
+        return [0, abs(nums[0] - nums[1])]
+    left = [0]
+    right = [0]
+    pnt = 0
+    pnt2 = len(nums) - 1
+    cur = 0
+    for i in range(len(nums) - 1):
+        cur += nums[i]
+        left.append(cur)
+    cur = 0
+    for i in range(len(nums) - 1, 0, -1):
+        cur += nums[i]
+        right.append(cur)
+    while pnt < len(nums):
+        nums[pnt] = abs(left[pnt] - right[pnt2])
+        pnt += 1
+        pnt2 -= 1
+    return nums
+
+print(leftRigthDifference(nums))
