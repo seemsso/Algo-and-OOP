@@ -46,6 +46,7 @@
 # p1 = Person()
 #
 # print(hasattr(Person, 'job'))
+import random
 
 """ CLASS METHODS TRAINING """
 
@@ -676,49 +677,81 @@
 # a.draw()  # 1 2 3 4
 
 
-class Point:
+# class Point:
+#
+#     def __init__(self, *args):
+#         if self.__check_coords(*args):
+#             self.__x, self.__y = args
+#
+#     def get_coords(self):
+#         return self.__x, self.__y
+#
+#     @classmethod
+#     def __check_coords(cls, *args):
+#         for i in args:
+#             if type(i) not in (int, float):
+#                 return False
+#         return True
+#
+# class Rectangle:
+#
+#     def __init__(self, *args):
+#         if len(args) == 4:
+#             self.__sp = args[0], args[1]
+#             self.__ep = args[2], args[3]
+#         else:
+#             self.__sp = args[0]
+#             self.__ep = args[1]
+#
+#
+#     def set_coords(self, sp, ep):
+#         self.__sp = sp
+#         self.__ep = ep
+#
+#     def get_coords(self):
+#         return self.__sp, self.__ep
+#
+#     def draw(self):
+#         if type(self.__sp) != Point:
+#             print(f"Прямоугольник с координатами: {self.__sp} {self.__ep}")
+#         else:
+#             print(f"Прямоугольник с координатами: {self.__sp.get_coords()} {self.__ep.get_coords}")
+#
+#
+#
+# rect = Rectangle(0, 0, 20, 34)
 
-    def __init__(self, *args):
-        if self.__check_coords(*args):
-            self.__x, self.__y = args
 
-    def get_coords(self):
-        return self.__x, self.__y
+from random import randint
+from string import ascii_lowercase, ascii_uppercase, digits
+
+class EmailValidator:
+    chars = ascii_uppercase + ascii_lowercase + digits + '_@.'
+    random_chars = ascii_uppercase + ascii_lowercase + digits + '_'
+
+    def __new__(cls, *args, **kwargs):
+        return None
 
     @classmethod
-    def __check_coords(cls, *args):
-        for i in args:
-            if type(i) not in (int, float):
-                return False
-        return True
+    def check_email(cls, email):
+        if not cls.__is_email_str(email) or not set(email) <= set(cls.chars):
+            return False
+        divide = email.split('@')
+        if len(divide) != 2 or len(divide[0]) > 100 \
+                or len(divide[1]) > 50 \
+                or '.' not in divide[1] or email.count('..') > 0:
+            return False
 
-class Rectangle:
+    @staticmethod
+    def __is_email_str(email):
+        return type(email) is str
 
-    def __init__(self, *args):
-        if len(args) == 4:
-            self.__sp = args[0], args[1]
-            self.__ep = args[2], args[3]
-        else:
-            self.__sp = args[0]
-            self.__ep = args[1]
+    @classmethod
+    def get_random_email(cls):
+        symbols = random.randint(1, 5)
+        length = len(cls.random_chars) - 1
+        return ''.join(cls.random_chars[randint(0, length)] for i in range(symbols)) + '@gmail.com'
 
-
-    def set_coords(self, sp, ep):
-        self.__sp = sp
-        self.__ep = ep
-
-    def get_coords(self):
-        return self.__sp, self.__ep
-
-    def draw(self):
-        if type(self.__sp) != Point:
-            print(f"Прямоугольник с координатами: {self.__sp} {self.__ep}")
-        else:
-            print(f"Прямоугольник с координатами: {self.__sp.get_coords()} {self.__ep.get_coords}")
-
-
-
-rect = Rectangle(0, 0, 20, 34)
 
 
 
