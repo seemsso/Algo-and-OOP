@@ -593,84 +593,134 @@
 # print(clock.get_time())
 
 
-class Money:
-
-    def __init__(self, money):
-        self.__money = 0
-        if self.__check_money(money):
-            self.__money = money
-
-    def set_money(self, money):
-        if self.__check_money(money):
-            self.__money = money
-
-    def get_money(self):
-        return self.__money
-
-    def add_money(self, mn):
-        self.__money += mn.get_money()
-
-    @classmethod
-    def __check_money(cls, money):
-        if type(money) is int:
-            return True
-        return False
-
-
-mn_1 = Money(10)
-mn_2 = Money(20)
-mn_1.set_money(100)
-mn_2.add_money(mn_1)
-m1 = mn_1.get_money()    # 100
-m2 = mn_2.get_money()    # 120
-
-
-class Book:
+# class Money:
+#
+#     def __init__(self, money):
+#         self.__money = 0
+#         if self.__check_money(money):
+#             self.__money = money
+#
+#     def set_money(self, money):
+#         if self.__check_money(money):
+#             self.__money = money
+#
+#     def get_money(self):
+#         return self.__money
+#
+#     def add_money(self, mn):
+#         self.__money += mn.get_money()
+#
+#     @classmethod
+#     def __check_money(cls, money):
+#         if type(money) is int:
+#             return True
+#         return False
+#
+#
+# mn_1 = Money(10)
+# mn_2 = Money(20)
+# mn_1.set_money(100)
+# mn_2.add_money(mn_1)
+# m1 = mn_1.get_money()    # 100
+# m2 = mn_2.get_money()    # 120
 
 
-    def __init__(self, author, title, price):
-        self.__author = author
-        self.__title = title
-        self.__price = price
+# class Book:
+#
+#
+#     def __init__(self, author, title, price):
+#         self.__author = author
+#         self.__title = title
+#         self.__price = price
+#
+#     def set_title(self, title):
+#         self.__title = title
+#
+#     def set_author(self, author):
+#         self.__author = author
+#
+#     def set_price(self, price):
+#         self.__price = price
+#
+#     def get_title(self):
+#         return self.__title
+#
+#     def get_author(self):
+#         return self.__author
+#
+#     def get_price(self):
+#         return self.__price
 
-    def set_title(self, title):
-        self.__title = title
 
-    def set_author(self, author):
-        self.__author = author
+# class Line:
+#
+#     def __init__(self, x1, y1, x2, y2):
+#         self.__x1 = x1
+#         self.__y1 = y1
+#         self.__x2 = x2
+#         self.__y2 = y2
+#
+#     def set_coords(self, *args):
+#         self.__x1, self.__y1, self.__x2, self.__y2 = args
+#
+#     def get_coords(self):
+#         self.coords = self.__x1, self.__y1, self.__x2, self.__y2
+#         return self.coords
+#
+#     def draw(self):
+#         print(*self.get_coords())
+#
+# a = Line(1, 2, 3, 4)
+# s = a.get_coords()
+# print(s)  # (1, 2, 3, 4)
+# a.draw()  # 1 2 3 4
 
-    def set_price(self, price):
-        self.__price = price
 
-    def get_title(self):
-        return self.__title
+class Point:
 
-    def get_author(self):
-        return self.__author
-
-    def get_price(self):
-        return self.__price
-
-
-class Line:
-
-    def __init__(self, x1, y1, x2, y2):
-        self.__x1 = x1
-        self.__y1 = y1
-        self.__x2 = x2
-        self.__y2 = y2
-
-    def set_coords(self, *args):
-        self.__x1, self.__y1, self.__x2, self.__y2 = args
+    def __init__(self, *args):
+        if self.__check_coords(*args):
+            self.__x, self.__y = args
 
     def get_coords(self):
-        self.coords = self.__x1, self.__y1, self.__x2, self.__y2
-        return self.coords
+        return self.__x, self.__y
+
+    @classmethod
+    def __check_coords(cls, *args):
+        for i in args:
+            if type(i) not in (int, float):
+                return False
+        return True
+
+class Rectangle:
+
+    def __init__(self, *args):
+        if len(args) == 4:
+            self.__sp = args[0], args[1]
+            self.__ep = args[2], args[3]
+        else:
+            self.__sp = args[0]
+            self.__ep = args[1]
+
+
+    def set_coords(self, sp, ep):
+        self.__sp = sp
+        self.__ep = ep
+
+    def get_coords(self):
+        return self.__sp, self.__ep
 
     def draw(self):
-        print(*self.get_coords())
+        if type(self.__sp) != Point:
+            print(f"Прямоугольник с координатами: {self.__sp} {self.__ep}")
+        else:
+            print(f"Прямоугольник с координатами: {self.__sp.get_coords()} {self.__ep.get_coords}")
 
-a = Line(1, 2, 3, 4)
-s = a.get_coords()
-print(s)  # (1, 2, 3, 4)
-a.draw()  # 1 2 3 4
+
+
+rect = Rectangle(0, 0, 20, 34)
+
+
+
+
+
