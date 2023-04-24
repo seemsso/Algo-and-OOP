@@ -1222,30 +1222,48 @@
 
 
 #2574
-nums = [1, 3, 10, 5, 7]
+# nums = [1, 3, 10, 5, 7]
+#
+#
+# def leftRigthDifference(nums):
+#     if len(nums) == 1:
+#         return [0]
+#     elif len(nums) == 2:
+#         return [0, abs(nums[0] - nums[1])]
+#     left = [0]
+#     right = [0]
+#     pnt = 0
+#     pnt2 = len(nums) - 1
+#     cur = 0
+#     for i in range(len(nums) - 1):
+#         cur += nums[i]
+#         left.append(cur)
+#     cur = 0
+#     for i in range(len(nums) - 1, 0, -1):
+#         cur += nums[i]
+#         right.append(cur)
+#     while pnt < len(nums):
+#         nums[pnt] = abs(left[pnt] - right[pnt2])
+#         pnt += 1
+#         pnt2 -= 1
+#     return nums
+#
+#
+# print(leftRigthDifference(nums))
 
+#1047
 
-def leftRigthDifference(nums):
-    if len(nums) == 1:
-        return [0]
-    elif len(nums) == 2:
-        return [0, abs(nums[0] - nums[1])]
-    left = [0]
-    right = [0]
-    pnt = 0
-    pnt2 = len(nums) - 1
-    cur = 0
-    for i in range(len(nums) - 1):
-        cur += nums[i]
-        left.append(cur)
-    cur = 0
-    for i in range(len(nums) - 1, 0, -1):
-        cur += nums[i]
-        right.append(cur)
-    while pnt < len(nums):
-        nums[pnt] = abs(left[pnt] - right[pnt2])
-        pnt += 1
-        pnt2 -= 1
-    return nums
+s = "aba"
 
-print(leftRigthDifference(nums))
+def removeDuplicates(s: str) -> str:
+    if len(s) == 1:
+        return s
+    stack = [s[0]]
+    for i in range(1, len(s)):
+        if stack and stack[-1] == s[i]:
+            stack.pop()
+        else:
+            stack.append(s[i])
+    return ''.join(stack)
+
+print(removeDuplicates(s))
