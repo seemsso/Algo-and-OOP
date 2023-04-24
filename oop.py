@@ -623,3 +623,54 @@ mn_1.set_money(100)
 mn_2.add_money(mn_1)
 m1 = mn_1.get_money()    # 100
 m2 = mn_2.get_money()    # 120
+
+
+class Book:
+
+
+    def __init__(self, author, title, price):
+        self.__author = author
+        self.__title = title
+        self.__price = price
+
+    def set_title(self, title):
+        self.__title = title
+
+    def set_author(self, author):
+        self.__author = author
+
+    def set_price(self, price):
+        self.__price = price
+
+    def get_title(self):
+        return self.__title
+
+    def get_author(self):
+        return self.__author
+
+    def get_price(self):
+        return self.__price
+
+
+class Line:
+
+    def __init__(self, x1, y1, x2, y2):
+        self.__x1 = x1
+        self.__y1 = y1
+        self.__x2 = x2
+        self.__y2 = y2
+
+    def set_coords(self, *args):
+        self.__x1, self.__y1, self.__x2, self.__y2 = args
+
+    def get_coords(self):
+        self.coords = self.__x1, self.__y1, self.__x2, self.__y2
+        return self.coords
+
+    def draw(self):
+        print(*self.get_coords())
+
+a = Line(1, 2, 3, 4)
+s = a.get_coords()
+print(s)  # (1, 2, 3, 4)
+a.draw()  # 1 2 3 4
