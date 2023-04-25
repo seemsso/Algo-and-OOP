@@ -46,7 +46,7 @@
 # p1 = Person()
 #
 # print(hasattr(Person, 'job'))
-import random
+# import random
 
 """ CLASS METHODS TRAINING """
 
@@ -558,7 +558,6 @@ import random
 
 """Access public,private,protected"""
 
-
 # class Clock:
 #     cur = []
 #
@@ -722,38 +721,53 @@ import random
 # rect = Rectangle(0, 0, 20, 34)
 
 
-from random import randint
-from string import ascii_lowercase, ascii_uppercase, digits
-
-class EmailValidator:
-    chars = ascii_uppercase + ascii_lowercase + digits + '_@.'
-    random_chars = ascii_uppercase + ascii_lowercase + digits + '_'
-
-    def __new__(cls, *args, **kwargs):
-        return None
-
-    @classmethod
-    def check_email(cls, email):
-        if not cls.__is_email_str(email) or not set(email) <= set(cls.chars):
-            return False
-        divide = email.split('@')
-        if len(divide) != 2 or len(divide[0]) > 100 \
-                or len(divide[1]) > 50 \
-                or '.' not in divide[1] or email.count('..') > 0:
-            return False
-
-    @staticmethod
-    def __is_email_str(email):
-        return type(email) is str
-
-    @classmethod
-    def get_random_email(cls):
-        symbols = random.randint(1, 5)
-        length = len(cls.random_chars) - 1
-        return ''.join(cls.random_chars[randint(0, length)] for i in range(symbols)) + '@gmail.com'
-
-
+# from random import randint
+# from string import ascii_lowercase, ascii_uppercase, digits
+#
+# class EmailValidator:
+#     chars = ascii_uppercase + ascii_lowercase + digits + '_@.'
+#     random_chars = ascii_uppercase + ascii_lowercase + digits + '_'
+#
+#     def __new__(cls, *args, **kwargs):
+#         return None
+#
+#     @classmethod
+#     def check_email(cls, email):
+#         if not cls.__is_email_str(email) or not set(email) <= set(cls.chars):
+#             return False
+#         divide = email.split('@')
+#         if len(divide) != 2 or len(divide[0]) > 100 \
+#                 or len(divide[1]) > 50 \
+#                 or '.' not in divide[1] or email.count('..') > 0:
+#             return False
+#
+#     @staticmethod
+#     def __is_email_str(email):
+#         return type(email) is str
+#
+#     @classmethod
+#     def get_random_email(cls):
+#         symbols = random.randint(1, 5)
+#         length = len(cls.random_chars) - 1
+#         return ''.join(cls.random_chars[randint(0, length)] for i in range(symbols)) + '@gmail.com'
 
 
+class Car:
 
+    def __init__(self, model):
+        self.__model = model
+
+    @property
+    def model(self):
+        return self.__model
+
+    @model.setter
+    def model(self, model):
+        if (isinstance(model, str)) and (len(model) in range(2, 100)):
+            self.__model = model
+
+car = Car('kek')
+print(car.model)
+car.model = 'Toyota'
+print(car.model)
 

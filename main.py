@@ -1,6 +1,5 @@
 """ REPEAT PYTHON BASE WITH MARK LUTZ BOOK """
 
-
 """ INT/FLOAT """
 # import math
 # a = 5.5
@@ -162,8 +161,6 @@
 # print(next(a))
 
 
-
-
 # Sample Input:
 #
 # 10 5 4 -3 2 0 5 10 3
@@ -194,7 +191,6 @@
 # print(*c)
 
 
-
 # Sample Input:
 #
 # смартфон:120000
@@ -206,7 +202,6 @@
 # Sample Output:
 #
 # яблоко линейка бумага
-
 
 
 # import sys
@@ -404,14 +399,12 @@
 
 """ GENERATORS """
 
-
 # For files:
 # [line.rstrip for line in open("testpy.txt").readlines()] -without '\n'
 
 # listoftuple = [('bob', 35, 'mgr'), ('sue', 40, 'dev')]
 # [] -table, () - str, in () values
 # list(map((lambda row: row[1]), listoftuple))
-
 
 
 # def ups(line):
@@ -431,7 +424,7 @@
 # c = iter(a)
 # print(next(c))
 
-#saved position in yield
+# saved position in yield
 # def func():
 #     yield from [1, 2, 3, 4]
 #
@@ -443,16 +436,12 @@
 # print(next(b))
 
 
-
-
-
 """ sorted(key=func) or sort(key=func) """
 
 # rivers = ['Лена', 'Енисей', 'Волга', 'Дон']
 #
 # rivers_len = sorted(rivers, key=len,reverse=True)
 # print(*rivers_len)
-
 
 
 # import sys
@@ -532,3 +521,4 @@
 # a = [3, 3, 3, 2, 3, 3]
 #
 # print("отчислен" if any(map(lambda x: x < 3, a)) else "учится") # => отчислен
+
