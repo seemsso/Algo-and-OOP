@@ -558,6 +558,7 @@
 
 """Access public,private,protected"""
 
+
 # class Clock:
 #     cur = []
 #
@@ -809,7 +810,6 @@
 #         print(f"{self.title}: {self.width}, {self.height}")
 
 
-
 # self.__x = self.__y = 0
 # self.x = x
 # self.y = y
@@ -855,47 +855,107 @@
 #         return (vector.x * vector.x) + (vector.y * vector.y)
 
 
-from math import sqrt
-class PathLines:
+# from math import sqrt
+# class PathLines:
+#
+#
+#     def __init__(self, *val):
+#         self.lst = [LineTo(0, 0)]
+#         for el in val:
+#             self.add_line(el)
+#
+#     def get_path(self):
+#         return self.lst[1:]
+#
+#     def get_length(self):
+#         coords = ((self.lst[i - 1], self.lst[i]) for i in range(1, len(self.lst)))
+#         return sum(map(lambda t: sqrt(pow(t[0].x - t[1].x, 2) + pow(t[0].y - t[1].y, 2)), coords))
+#
+#     def add_line(self, line):
+#         self.lst.append(line)
+#
+#
+#
+#
+# class LineTo:
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#
+# p = PathLines(LineTo(1, 2))
+# print(p.get_length())  # 2.23606797749979
+# p.add_line(LineTo(10, 20))
+# p.add_line(LineTo(5, 17))
+# print(p.get_length())  # 28.191631669843197
+# m = p.get_path()
+# print(all(isinstance(i, LineTo) for i in m) and len(m) == 3)  # True
+#
+# h = PathLines(LineTo(4, 8), LineTo(-10, 30), LineTo(14, 2))
+# print(h.get_length())  # 71.8992593599813
+#
+# k = PathLines()
+# print(k.get_length())  # 0
+# print(k.get_path())  # []
 
 
-    def __init__(self, *val):
-        self.lst = [LineTo(0, 0)]
-        for el in val:
-            self.add_line(el)
+class StringValue:
 
-    def get_path(self):
-        return self.lst[1:]
+    def __init__(self, min_length, max_length):
+        self.min_length = min_length
+        self.max_length = max_length
 
-    def get_length(self):
-        coords = ((self.lst[i - 1], self.lst[i]) for i in range(1, len(self.lst)))
-        return sum(map(lambda t: sqrt(pow(t[0].x - t[1].x, 2) + pow(t[0].y - t[1].y, 2)), coords))
+    def __set_name__(self, owner, name):
+        self.name = '_' + name
 
-    def add_line(self, line):
-        self.lst.append(line)
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name)
 
+    def __set__(self, instance, value):
+        if self.check_value(value):
+            setattr(instance, self.name, value)
 
-
-
-class LineTo:
-
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-
-p = PathLines(LineTo(1, 2))
-print(p.get_length())  # 2.23606797749979
-p.add_line(LineTo(10, 20))
-p.add_line(LineTo(5, 17))
-print(p.get_length())  # 28.191631669843197
-m = p.get_path()
-print(all(isinstance(i, LineTo) for i in m) and len(m) == 3)  # True
-
-h = PathLines(LineTo(4, 8), LineTo(-10, 30), LineTo(14, 2))
-print(h.get_length())  # 71.8992593599813
-
-k = PathLines()
-print(k.get_length())  # 0
-print(k.get_path())  # []
+    def check_value(self, value):
+        return isinstance(value, str) and self.min_length <= len(value) <= self.max_length
 
 
+class PriceValue:
+
+    def __init__(self, max_value):
+        self.max_value = max_value
+
+    def __set_name__(self, owner, name):
+        self.name = '_' + name
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name)
+
+    def __set__(self, instance, value):
+        if self.check_value(value):
+            setattr(instance, self.name, value)
+
+    def check_value(self, value):
+        return type(value) in (int, float) and 0 <= value <= self.max_value
+
+
+class Product:
+    name = StringValue(2, 50)
+    price = PriceValue(10000)
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+
+class SuperShop:
+    goods = []
+
+    def __init__(self, name):
+        self.name = name
+
+    def add_product(self, product):
+        self.goods.append(product)
+
+    def remove_product(self, product):
+        if product in self.goods:
+            self.goods.remove(product)
