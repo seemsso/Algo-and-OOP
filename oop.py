@@ -751,23 +751,61 @@
 #         length = len(cls.random_chars) - 1
 #         return ''.join(cls.random_chars[randint(0, length)] for i in range(symbols)) + '@gmail.com'
 
+#
+# class Car:
+#
+#     def __init__(self, model):
+#         self.__model = model
+#
+#     @property
+#     def model(self):
+#         return self.__model
+#
+#     @model.setter
+#     def model(self, model):
+#         if (isinstance(model, str)) and (len(model) in range(2, 100)):
+#             self.__model = model
+#
+# car = Car('kek')
+# print(car.model)
+# car.model = 'Toyota'
+# print(car.model)
 
-class Car:
 
-    def __init__(self, model):
-        self.__model = model
+class WindowDlg:
+
+    def __init__(self, title, width, height):
+        if isinstance(title, str):
+            self.__title = title
+        if type(width) in (int, float) and type(height) in (int, float):
+            self.__width = width
+            self.__height = height
 
     @property
-    def model(self):
-        return self.__model
+    def title(self):
+        return self.__title
 
-    @model.setter
-    def model(self, model):
-        if (isinstance(model, str)) and (len(model) in range(2, 100)):
-            self.__model = model
+    @property
+    def width(self):
+        return self.__width
 
-car = Car('kek')
-print(car.model)
-car.model = 'Toyota'
-print(car.model)
+    @width.setter
+    def width(self, width):
+        if type(width) in (int, float) and (0 <= width <= 10000):
+            self.__width = width
+            self.show()
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, height):
+        if type(height) in (int, float) and (0 <= height <= 10000):
+            self.__height = height
+            self.show()
+
+    def show(self):
+        print(f"{self.title}: {self.width}, {self.height}")
+
 
