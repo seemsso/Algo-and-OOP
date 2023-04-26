@@ -772,40 +772,89 @@
 # print(car.model)
 
 
-class WindowDlg:
+# class WindowDlg:
+#
+#     def __init__(self, title, width, height):
+#         if isinstance(title, str):
+#             self.__title = title
+#         if type(width) in (int, float) and type(height) in (int, float):
+#             self.__width = width
+#             self.__height = height
+#
+#     @property
+#     def title(self):
+#         return self.__title
+#
+#     @property
+#     def width(self):
+#         return self.__width
+#
+#     @width.setter
+#     def width(self, width):
+#         if type(width) in (int, float) and (0 <= width <= 10000):
+#             self.__width = width
+#             self.show()
+#
+#     @property
+#     def height(self):
+#         return self.__height
+#
+#     @height.setter
+#     def height(self, height):
+#         if type(height) in (int, float) and (0 <= height <= 10000):
+#             self.__height = height
+#             self.show()
+#
+#     def show(self):
+#         print(f"{self.title}: {self.width}, {self.height}")
 
-    def __init__(self, title, width, height):
-        if isinstance(title, str):
-            self.__title = title
-        if type(width) in (int, float) and type(height) in (int, float):
-            self.__width = width
-            self.__height = height
+
+
+# self.__x = self.__y = 0
+# self.x = x
+# self.y = y
+#
+#
+# return (vector.x * vector.x) + (vector.y * vector.y)
+
+class RadiusVector2D:
+    MIN_COORD = -100
+    MAX_COORD = 1024
+
+    def __init__(self, x=0, y=0):
+        self.__x = self.__y = 0
+        if self.check_value(x) and self.check_value(y):
+            self.x = x
+            self.y = y
+
+    @classmethod
+    def check_value(cls, value):
+        return type(value) in (int, float) and cls.MIN_COORD <= value <= cls.MAX_COORD
+
 
     @property
-    def title(self):
-        return self.__title
+    def x(self):
+        return self.__x
+
+    @x.setter
+    def x(self, val):
+        if self.check_value(val):
+            self.__x = val
 
     @property
-    def width(self):
-        return self.__width
+    def y(self):
+        return self.__y
 
-    @width.setter
-    def width(self, width):
-        if type(width) in (int, float) and (0 <= width <= 10000):
-            self.__width = width
-            self.show()
+    @y.setter
+    def y(self, val):
+        if self.check_value(val):
+            self.__y = val
 
-    @property
-    def height(self):
-        return self.__height
+    @staticmethod
+    def norm2(vector):
+        return (vector.x * vector.x) + (vector.y * vector.y)
 
-    @height.setter
-    def height(self, height):
-        if type(height) in (int, float) and (0 <= height <= 10000):
-            self.__height = height
-            self.show()
 
-    def show(self):
-        print(f"{self.title}: {self.width}, {self.height}")
+
 
 
