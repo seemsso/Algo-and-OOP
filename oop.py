@@ -817,44 +817,85 @@
 #
 # return (vector.x * vector.x) + (vector.y * vector.y)
 
-class RadiusVector2D:
-    MIN_COORD = -100
-    MAX_COORD = 1024
+# class RadiusVector2D:
+#     MIN_COORD = -100
+#     MAX_COORD = 1024
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = self.__y = 0
+#         if self.check_value(x) and self.check_value(y):
+#             self.x = x
+#             self.y = y
+#
+#     @classmethod
+#     def check_value(cls, value):
+#         return type(value) in (int, float) and cls.MIN_COORD <= value <= cls.MAX_COORD
+#
+#
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, val):
+#         if self.check_value(val):
+#             self.__x = val
+#
+#     @property
+#     def y(self):
+#         return self.__y
+#
+#     @y.setter
+#     def y(self, val):
+#         if self.check_value(val):
+#             self.__y = val
+#
+#     @staticmethod
+#     def norm2(vector):
+#         return (vector.x * vector.x) + (vector.y * vector.y)
+
+
+from math import sqrt
+class PathLines:
+
+
+    def __init__(self, *val):
+        self.lst = [LineTo(0, 0)]
+        for el in val:
+            self.add_line(el)
+
+    def get_path(self):
+        return self.lst[1:]
+
+    def get_length(self):
+        coords = ((self.lst[i - 1], self.lst[i]) for i in range(1, len(self.lst)))
+        return sum(map(lambda t: sqrt(pow(t[0].x - t[1].x, 2) + pow(t[0].y - t[1].y, 2)), coords))
+
+    def add_line(self, line):
+        self.lst.append(line)
+
+
+
+
+class LineTo:
 
     def __init__(self, x=0, y=0):
-        self.__x = self.__y = 0
-        if self.check_value(x) and self.check_value(y):
-            self.x = x
-            self.y = y
+        self.x = x
+        self.y = y
 
-    @classmethod
-    def check_value(cls, value):
-        return type(value) in (int, float) and cls.MIN_COORD <= value <= cls.MAX_COORD
+p = PathLines(LineTo(1, 2))
+print(p.get_length())  # 2.23606797749979
+p.add_line(LineTo(10, 20))
+p.add_line(LineTo(5, 17))
+print(p.get_length())  # 28.191631669843197
+m = p.get_path()
+print(all(isinstance(i, LineTo) for i in m) and len(m) == 3)  # True
 
+h = PathLines(LineTo(4, 8), LineTo(-10, 30), LineTo(14, 2))
+print(h.get_length())  # 71.8992593599813
 
-    @property
-    def x(self):
-        return self.__x
-
-    @x.setter
-    def x(self, val):
-        if self.check_value(val):
-            self.__x = val
-
-    @property
-    def y(self):
-        return self.__y
-
-    @y.setter
-    def y(self, val):
-        if self.check_value(val):
-            self.__y = val
-
-    @staticmethod
-    def norm2(vector):
-        return (vector.x * vector.x) + (vector.y * vector.y)
-
-
-
+k = PathLines()
+print(k.get_length())  # 0
+print(k.get_path())  # []
 
 
