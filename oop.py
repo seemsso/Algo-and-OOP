@@ -962,7 +962,6 @@
 
 """ Inheritance """
 
-
 # class Animal:
 #
 #     def __init__(self, name, old):
@@ -1014,25 +1013,44 @@
 
 """ issubclass """
 
+# class ListInteger(list):
+#
+#     def __init__(self, lst):
+#         for el in lst:
+#             self.check_value(el)
+#         super().__init__(lst)
+#
+#     def check_value(self, el):
+#         if type(el) != int:
+#             raise TypeError('можно передавать только целочисленные значения')
+#
+#
+#     def __setitem__(self, key, value):
+#         self.check_value(value)
+#         super().__setitem__(key, value)
+#
+#
+#
+#     def append(self, value):
+#         self.check_value(value)
+#         super().append(value)
 
-class ListInteger(list):
 
-    def __init__(self, lst):
-        for el in lst:
-            self.check_value(el)
-        super().__init__(lst)
-
-    def check_value(self, el):
-        if type(el) != int:
-            raise TypeError('можно передавать только целочисленные значения')
+""" super() """
 
 
-    def __setitem__(self, key, value):
-        self.check_value(value)
-        super().__setitem__(key, value)
+class Book:
+
+    def __init__(self, title, author, pages, year):
+        self.title = title
+        self.author = author
+        self.pages = pages
+        self.year = year
 
 
+class DigitBook(Book):
 
-    def append(self, value):
-        self.check_value(value)
-        super().append(value)
+    def __init__(self, title, author, pages, year, size, frm):
+        super().__init__(title, author, pages, year)
+        self.size = size
+        self.frm = frm
