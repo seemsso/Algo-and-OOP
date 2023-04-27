@@ -1283,35 +1283,86 @@
 #
 # print(truncateSentence(s, k))
 
-s = "MCMXCIV"
+# s = "MCMXCIV"
+#
+#
+# def romanToInt(s: str) -> int:
+#     result = 0
+#     prev = 0
+#     cur = 1
+#     dct = {
+#         'I': 1,
+#         'V': 5,
+#         'X': 10,
+#         'L': 50,
+#         'C': 100,
+#         'D': 500,
+#         'M': 1000,
+#     }
+#     while cur < len(s):
+#         if dct[s[cur]] > dct[s[prev]]:
+#             diff = dct[s[cur]] - dct[s[prev]]
+#             result += diff
+#             cur += 2
+#             prev += 2
+#         else:
+#             result += dct[s[prev]]
+#             cur += 1
+#             prev += 1
+#     if prev < len(s):
+#         result += dct[s[prev]]
+#     return result
+#
+#
+# print(romanToInt(s))
 
 
-def romanToInt(s: str) -> int:
-    result = 0
-    prev = 0
-    cur = 1
-    dct = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000,
-    }
-    while cur < len(s):
-        if dct[s[cur]] > dct[s[prev]]:
-            diff = dct[s[cur]] - dct[s[prev]]
-            result += diff
-            cur += 2
-            prev += 2
-        else:
-            result += dct[s[prev]]
-            cur += 1
-            prev += 1
-    if prev < len(s):
-        result += dct[s[prev]]
+# 2418
+
+names = ["Mary", "John", "Emma"]
+heights = [180, 165, 170]
+
+
+def sortPeople(names, heights):
+    dct = {}
+    length = len(names)
+    for i in range(length):
+        dct[heights[i]] = names[i]
+
+    def merge_sort(a, b):
+        rst = []
+        n = len(a)
+        m = len(b)
+        i = 0
+        j = 0
+        while i < n and j < m:
+            if a[i] > b[j]:
+                rst.append(b[j])
+                j += 1
+            else:
+                rst.append(a[i])
+                i += 1
+        rst += a[i:] + b[j:]
+        return rst
+
+    def recursion(arr):
+        mid = len(arr) // 2
+        left = arr[:mid]
+        right = arr[mid:]
+        if len(left) >= 2:
+            left = recursion(left)
+        if len(right) >= 2:
+            right = recursion(right)
+        return merge_sort(left, right)
+
+    heights_sort = recursion(heights)
+
+    result = []
+    for i in range(length - 1, -1, -1):
+        result.append(dct[heights_sort[i]])
     return result
 
 
-print(romanToInt(s))
+#
+#
+print(sortPeople(names, heights))
