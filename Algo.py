@@ -1253,17 +1253,34 @@
 
 #1047
 
-s = "aba"
-
-def removeDuplicates(s: str) -> str:
-    if len(s) == 1:
-        return s
-    stack = [s[0]]
-    for i in range(1, len(s)):
-        if stack and stack[-1] == s[i]:
-            stack.pop()
-        else:
-            stack.append(s[i])
-    return ''.join(stack)
+# s = "aba"
+#
+# def removeDuplicates(s: str) -> str:
+#     if len(s) == 1:
+#         return s
+#     stack = [s[0]]
+#     for i in range(1, len(s)):
+#         if stack and stack[-1] == s[i]:
+#             stack.pop()
+#         else:
+#             stack.append(s[i])
+#     return ''.join(stack)
 
 # print(removeDuplicates(s))
+
+#1816
+s = "a rol k"
+k = 2
+
+def truncateSentence(s: str, k: int) -> str:
+    score = 0
+    cur = 0
+    while score < k and cur < len(s):
+        if s[cur] == " ":
+            score += 1
+        cur += 1
+    return s[:cur]
+
+print(truncateSentence(s, k))
+
+
