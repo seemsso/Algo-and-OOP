@@ -992,21 +992,47 @@
 #         return f"{self.name}: {self.old}, {self.breed, self.size}"
 
 
-class Singleton:
-    cur = None
-    single = None
+# class Singleton:
+#     cur = None
+#     single = None
+#
+#     def __new__(cls, *args, **kwargs):
+#         if cls == Singleton:
+#             if cls.single is None:
+#                 cls.single = object.__new__(cls)
+#         if cls.cur is None:
+#             cls.cur = object.__new__(cls)
+#         return cls.cur
+#
+#
+# class Game(Singleton):
+#
+#     def __init__(self, name):
+#         if 'name' not in self.__dict__:
+#             self.name = name
 
-    def __new__(cls, *args, **kwargs):
-        if cls == Singleton:
-            if cls.single is None:
-                cls.single = object.__new__(cls)
-        if cls.cur is None:
-            cls.cur = object.__new__(cls)
-        return cls.cur
+
+""" issubclass """
 
 
-class Game(Singleton):
+class ListInteger(list):
 
-    def __init__(self, name):
-        if 'name' not in self.__dict__:
-            self.name = name
+    def __init__(self, lst):
+        for el in lst:
+            self.check_value(el)
+        super().__init__(lst)
+
+    def check_value(self, el):
+        if type(el) != int:
+            raise TypeError('можно передавать только целочисленные значения')
+
+
+    def __setitem__(self, key, value):
+        self.check_value(value)
+        super().__setitem__(key, value)
+
+
+
+    def append(self, value):
+        self.check_value(value)
+        super().append(value)
