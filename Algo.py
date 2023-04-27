@@ -1221,7 +1221,7 @@
 # print(set_unique(nums))
 
 
-#2574
+# 2574
 # nums = [1, 3, 10, 5, 7]
 #
 #
@@ -1251,7 +1251,7 @@
 #
 # print(leftRigthDifference(nums))
 
-#1047
+# 1047
 
 # s = "aba"
 #
@@ -1268,19 +1268,50 @@
 
 # print(removeDuplicates(s))
 
-#1816
-s = "a rol k"
-k = 2
+# 1816
+# s = "a rol k"
+# k = 2
+#
+# def truncateSentence(s: str, k: int) -> str:
+#     score = 0
+#     cur = 0
+#     while score < k and cur < len(s):
+#         if s[cur] == " ":
+#             score += 1
+#         cur += 1
+#     return s[:cur]
+#
+# print(truncateSentence(s, k))
 
-def truncateSentence(s: str, k: int) -> str:
-    score = 0
-    cur = 0
-    while score < k and cur < len(s):
-        if s[cur] == " ":
-            score += 1
-        cur += 1
-    return s[:cur]
-
-print(truncateSentence(s, k))
+s = "MCMXCIV"
 
 
+def romanToInt(s: str) -> int:
+    result = 0
+    prev = 0
+    cur = 1
+    dct = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    }
+    while cur < len(s):
+        if dct[s[cur]] > dct[s[prev]]:
+            diff = dct[s[cur]] - dct[s[prev]]
+            result += diff
+            cur += 2
+            prev += 2
+        else:
+            result += dct[s[prev]]
+            cur += 1
+            prev += 1
+    if prev < len(s):
+        result += dct[s[prev]]
+    return result
+
+
+print(romanToInt(s))
