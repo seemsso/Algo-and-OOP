@@ -558,7 +558,6 @@
 
 """Access public,private,protected"""
 
-
 # class Clock:
 #     cur = []
 #
@@ -964,30 +963,50 @@
 """ Inheritance """
 
 
-class Animal:
+# class Animal:
+#
+#     def __init__(self, name, old):
+#         self.name = name
+#         self.old = old
+#
+#
+# class Cat(Animal):
+#
+#     def __init__(self, name, old, color, weight):
+#         super().__init__(name, old)
+#         self.color = color
+#         self.weight = weight
+#
+#     def get_info(self):
+#         return f"{self.name}: {self.old}, {self.color, self.weight}"
+#
+#
+# class Dog(Animal):
+#
+#     def __init__(self, name, old, breed, size):
+#         super().__init__(name, old)
+#         self.breed = breed
+#         self.size = size
+#
+#     def get_info(self):
+#         return f"{self.name}: {self.old}, {self.breed, self.size}"
 
-    def __init__(self, name, old):
-        self.name = name
-        self.old = old
+
+class Singleton:
+    cur = None
+    single = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls == Singleton:
+            if cls.single is None:
+                cls.single = object.__new__(cls)
+        if cls.cur is None:
+            cls.cur = object.__new__(cls)
+        return cls.cur
 
 
-class Cat(Animal):
+class Game(Singleton):
 
-    def __init__(self, name, old, color, weight):
-        super().__init__(name, old)
-        self.color = color
-        self.weight = weight
-
-    def get_info(self):
-        return f"{self.name}: {self.old}, {self.color, self.weight}"
-
-
-class Dog(Animal):
-
-    def __init__(self, name, old, breed, size):
-        super().__init__(name, old)
-        self.breed = breed
-        self.size = size
-
-    def get_info(self):
-        return f"{self.name}: {self.old}, {self.breed, self.size}"
+    def __init__(self, name):
+        if 'name' not in self.__dict__:
+            self.name = name
