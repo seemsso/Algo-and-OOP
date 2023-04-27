@@ -899,63 +899,95 @@
 # print(k.get_path())  # []
 
 
-class StringValue:
+# class StringValue:
+#
+#     def __init__(self, min_length, max_length):
+#         self.min_length = min_length
+#         self.max_length = max_length
+#
+#     def __set_name__(self, owner, name):
+#         self.name = '_' + name
+#
+#     def __get__(self, instance, owner):
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         if self.check_value(value):
+#             setattr(instance, self.name, value)
+#
+#     def check_value(self, value):
+#         return isinstance(value, str) and self.min_length <= len(value) <= self.max_length
+#
+#
+# class PriceValue:
+#
+#     def __init__(self, max_value):
+#         self.max_value = max_value
+#
+#     def __set_name__(self, owner, name):
+#         self.name = '_' + name
+#
+#     def __get__(self, instance, owner):
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         if self.check_value(value):
+#             setattr(instance, self.name, value)
+#
+#     def check_value(self, value):
+#         return type(value) in (int, float) and 0 <= value <= self.max_value
+#
+#
+# class Product:
+#     name = StringValue(2, 50)
+#     price = PriceValue(10000)
+#
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
+#
+#
+# class SuperShop:
+#     goods = []
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def add_product(self, product):
+#         self.goods.append(product)
+#
+#     def remove_product(self, product):
+#         if product in self.goods:
+#             self.goods.remove(product)
 
-    def __init__(self, min_length, max_length):
-        self.min_length = min_length
-        self.max_length = max_length
 
-    def __set_name__(self, owner, name):
-        self.name = '_' + name
-
-    def __get__(self, instance, owner):
-        return getattr(instance, self.name)
-
-    def __set__(self, instance, value):
-        if self.check_value(value):
-            setattr(instance, self.name, value)
-
-    def check_value(self, value):
-        return isinstance(value, str) and self.min_length <= len(value) <= self.max_length
+""" Inheritance """
 
 
-class PriceValue:
+class Animal:
 
-    def __init__(self, max_value):
-        self.max_value = max_value
-
-    def __set_name__(self, owner, name):
-        self.name = '_' + name
-
-    def __get__(self, instance, owner):
-        return getattr(instance, self.name)
-
-    def __set__(self, instance, value):
-        if self.check_value(value):
-            setattr(instance, self.name, value)
-
-    def check_value(self, value):
-        return type(value) in (int, float) and 0 <= value <= self.max_value
-
-
-class Product:
-    name = StringValue(2, 50)
-    price = PriceValue(10000)
-
-    def __init__(self, name, price):
+    def __init__(self, name, old):
         self.name = name
-        self.price = price
+        self.old = old
 
 
-class SuperShop:
-    goods = []
+class Cat(Animal):
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, name, old, color, weight):
+        super().__init__(name, old)
+        self.color = color
+        self.weight = weight
 
-    def add_product(self, product):
-        self.goods.append(product)
+    def get_info(self):
+        return f"{self.name}: {self.old}, {self.color, self.weight}"
 
-    def remove_product(self, product):
-        if product in self.goods:
-            self.goods.remove(product)
+
+class Dog(Animal):
+
+    def __init__(self, name, old, breed, size):
+        super().__init__(name, old)
+        self.breed = breed
+        self.size = size
+
+    def get_info(self):
+        return f"{self.name}: {self.old}, {self.breed, self.size}"
