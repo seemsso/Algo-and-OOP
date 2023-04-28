@@ -1104,6 +1104,7 @@
 
 """Stack and queue"""
 
+
 # 1614 stack
 # s = "(1+(2*3)+((8)/4))+1"
 #
@@ -1380,13 +1381,38 @@ def bubble_sort(arr):
             return arr
     return arr
 
-# def selection_sort(arr):
-#     n = len(arr)
-#     minimum = arr[0]
-#     for i in range(1, n):
-#         minimum = arr[i]
-#         for j in range(i):
-#             if minimum > arr[j]:
-#                 minimum = j
-#         if arr[i] != minimum:
-#             arr[i],
+    # def selection_sort(arr):
+    #     n = len(arr)
+    #     minimum = arr[0]
+    #     for i in range(1, n):
+    #         minimum = arr[i]
+    #         for j in range(i):
+    #             if minimum > arr[j]:
+    #                 minimum = j
+    #         if arr[i] != minimum:
+    #             arr[i],
+
+
+# 14
+strs = ["froolic", "froolic", "fraodf", "frloadsf", "frlozcv"]
+
+
+def longestCommonPrefix(strs) -> str:
+    n = len(strs)
+    if n == 1:
+        return f"{strs[0]}"
+    strs.sort()
+    first = strs[0]
+    last = strs[-1]
+    result = []
+    for i in range(min(len(first), len(last))):
+        if first[i] != last[i]:
+            return ''.join(result)
+        result.append(first[i])
+    return ''.join(result)
+
+
+print(longestCommonPrefix(strs))
+
+
+
