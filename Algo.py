@@ -1394,25 +1394,45 @@ def bubble_sort(arr):
 
 
 # 14
-strs = ["froolic", "froolic", "fraodf", "frloadsf", "frlozcv"]
+# strs = ["froolic", "froolic", "fraodf", "frloadsf", "frlozcv"]
+#
+#
+# def longestCommonPrefix(strs) -> str:
+#     n = len(strs)
+#     if n == 1:
+#         return f"{strs[0]}"
+#     strs.sort()
+#     first = strs[0]
+#     last = strs[-1]
+#     result = []
+#     for i in range(min(len(first), len(last))):
+#         if first[i] != last[i]:
+#             return ''.join(result)
+#         result.append(first[i])
+#     return ''.join(result)
+#
+#
+# print(longestCommonPrefix(strs))
 
 
-def longestCommonPrefix(strs) -> str:
-    n = len(strs)
-    if n == 1:
-        return f"{strs[0]}"
-    strs.sort()
-    first = strs[0]
-    last = strs[-1]
-    result = []
-    for i in range(min(len(first), len(last))):
-        if first[i] != last[i]:
-            return ''.join(result)
-        result.append(first[i])
-    return ''.join(result)
+# 167
+
+numbers = [2, 7, 11, 15]
+target = 9
 
 
-print(longestCommonPrefix(strs))
+def twoSum(numbers, target: int):
+    left = 0
+    right = len(numbers) - 1
+    while left < right:
+        cur = target - numbers[left]
+        if cur == numbers[right]:
+            return [left + 1, right + 1]
+        elif numbers[right] > cur:
+            right -= 1
+        else:
+            left += 1
+    return []
 
 
-
+print(twoSum(numbers, target))
