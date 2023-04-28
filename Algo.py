@@ -1319,50 +1319,74 @@
 
 # 2418
 
-names = ["Mary", "John", "Emma"]
-heights = [180, 165, 170]
-
-
-def sortPeople(names, heights):
-    dct = {}
-    length = len(names)
-    for i in range(length):
-        dct[heights[i]] = names[i]
-
-    def merge_sort(a, b):
-        rst = []
-        n = len(a)
-        m = len(b)
-        i = 0
-        j = 0
-        while i < n and j < m:
-            if a[i] > b[j]:
-                rst.append(b[j])
-                j += 1
-            else:
-                rst.append(a[i])
-                i += 1
-        rst += a[i:] + b[j:]
-        return rst
-
-    def recursion(arr):
-        mid = len(arr) // 2
-        left = arr[:mid]
-        right = arr[mid:]
-        if len(left) >= 2:
-            left = recursion(left)
-        if len(right) >= 2:
-            right = recursion(right)
-        return merge_sort(left, right)
-
-    heights_sort = recursion(heights)
-
-    result = []
-    for i in range(length - 1, -1, -1):
-        result.append(dct[heights_sort[i]])
-    return result
-
-
+# names = ["Mary", "John", "Emma"]
+# heights = [180, 165, 170]
 #
 #
-print(sortPeople(names, heights))
+# def sortPeople(names, heights):
+#     dct = {}
+#     length = len(names)
+#     for i in range(length):
+#         dct[heights[i]] = names[i]
+#
+#     def merge_sort(a, b):
+#         rst = []
+#         n = len(a)
+#         m = len(b)
+#         i = 0
+#         j = 0
+#         while i < n and j < m:
+#             if a[i] > b[j]:
+#                 rst.append(b[j])
+#                 j += 1
+#             else:
+#                 rst.append(a[i])
+#                 i += 1
+#         rst += a[i:] + b[j:]
+#         return rst
+#
+#     def recursion(arr):
+#         mid = len(arr) // 2
+#         left = arr[:mid]
+#         right = arr[mid:]
+#         if len(left) >= 2:
+#             left = recursion(left)
+#         if len(right) >= 2:
+#             right = recursion(right)
+#         return merge_sort(left, right)
+#
+#     heights_sort = recursion(heights)
+#
+#     result = []
+#     for i in range(length - 1, -1, -1):
+#         result.append(dct[heights_sort[i]])
+#     return result
+#
+#
+# print(sortPeople(names, heights))
+
+# a = [3, -2, 5, 7, 1, 10]
+
+
+def bubble_sort(arr):
+    swapped = False
+    n = len(arr)
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if arr[j] > arr[j + 1]:
+                swapped = True
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        if not swapped:
+            return arr
+    return arr
+
+# def selection_sort(arr):
+#     n = len(arr)
+#     minimum = arr[0]
+#     for i in range(1, n):
+#         minimum = arr[i]
+#         for j in range(i):
+#             if minimum > arr[j]:
+#                 minimum = j
+#         if arr[i] != minimum:
+#             arr[i],
