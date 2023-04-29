@@ -1111,11 +1111,24 @@
 """ try/except """
 
 
-class Point:
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
+# class Point:
+#     def __init__(self, x, y):
+#         self._x = x
+#         self._y = y
+#
+#
+# pt = Point(1, 2)
+# print(getattr(pt, 'z', "Атрибут с именем z не существует"))
 
 
-pt = Point(1, 2)
-print(getattr(pt, 'z', "Атрибут с именем z не существует"))
+
+lst_in = input().split()
+result = 0
+for i in range(len(lst_in)):
+    try:
+        cur = int(lst_in[i])
+        result += cur
+    except:
+        pass
+print(result)
+
