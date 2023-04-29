@@ -1122,13 +1122,13 @@
 
 
 
-lst_in = input().split()
-result = 0
-for i in range(len(lst_in)):
-    try:
-        cur = int(lst_in[i])
-        result += cur
-    except:
-        pass
-print(result)
+# lst_in = input().split()
+# result = 0
+# for i in range(len(lst_in)):
+#     try:
+#         cur = int(lst_in[i])
+#         result += cur
+#     except:
+#         pass
+# print(result)
 

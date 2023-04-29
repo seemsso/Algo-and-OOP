@@ -1436,3 +1436,30 @@ def bubble_sort(arr):
 #
 #
 # print(twoSum(numbers, target))
+
+
+# 557
+s = "Let's take LeetCode contest"
+
+
+def reverseWords(s: str) -> str:
+    lst = []
+    if s.count(" ") == 0:
+        for i in range(len(s) - 1, -1, -1):
+            lst.append(s[i])
+        return ''.join(lst)
+    stack = []
+    for i in range(len(s)):
+        if s[i] == " ":
+            while stack:
+                lst.append(stack.pop())
+            lst.append(' ')
+        else:
+            stack.append(s[i])
+    while stack:
+        lst.append(stack.pop())
+
+    return ''.join(lst)
+
+
+print(reverseWords(s))
