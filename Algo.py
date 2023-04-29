@@ -1417,22 +1417,22 @@ def bubble_sort(arr):
 
 # 167
 
-numbers = [2, 7, 11, 15]
-target = 9
-
-
-def twoSum(numbers, target: int):
-    left = 0
-    right = len(numbers) - 1
-    while left < right:
-        cur = target - numbers[left]
-        if cur == numbers[right]:
-            return [left + 1, right + 1]
-        elif numbers[right] > cur:
-            right -= 1
-        else:
-            left += 1
-    return []
-
-
-print(twoSum(numbers, target))
+# numbers = [2, 7, 11, 15]
+# target = 9
+#
+#
+# def twoSum(numbers, target: int):
+#     left = 0
+#     right = len(numbers) - 1
+#     while left < right:
+#         cur = target - numbers[left]
+#         if cur == numbers[right]:
+#             return [left + 1, right + 1]
+#         elif numbers[right] > cur:
+#             right -= 1
+#         else:
+#             left += 1
+#     return []
+#
+#
+# print(twoSum(numbers, target))
