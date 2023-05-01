@@ -1369,17 +1369,17 @@
 # a = [3, -2, 5, 7, 1, 10]
 
 
-def bubble_sort(arr):
-    swapped = False
-    n = len(arr)
-    for i in range(n - 1):
-        for j in range(n - i - 1):
-            if arr[j] > arr[j + 1]:
-                swapped = True
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-        if not swapped:
-            return arr
-    return arr
+# def bubble_sort(arr):
+#     swapped = False
+#     n = len(arr)
+#     for i in range(n - 1):
+#         for j in range(n - i - 1):
+#             if arr[j] > arr[j + 1]:
+#                 swapped = True
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#         if not swapped:
+#             return arr
+#     return arr
 
     # def selection_sort(arr):
     #     n = len(arr)
