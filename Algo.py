@@ -1381,16 +1381,16 @@
 #             return arr
 #     return arr
 
-    # def selection_sort(arr):
-    #     n = len(arr)
-    #     minimum = arr[0]
-    #     for i in range(1, n):
-    #         minimum = arr[i]
-    #         for j in range(i):
-    #             if minimum > arr[j]:
-    #                 minimum = j
-    #         if arr[i] != minimum:
-    #             arr[i],
+# def selection_sort(arr):
+#     n = len(arr)
+#     minimum = arr[0]
+#     for i in range(1, n):
+#         minimum = arr[i]
+#         for j in range(i):
+#             if minimum > arr[j]:
+#                 minimum = j
+#         if arr[i] != minimum:
+#             arr[i],
 
 
 # 14
