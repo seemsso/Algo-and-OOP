@@ -1104,7 +1104,6 @@
 
 """Stack and queue"""
 
-
 # 1614 stack
 # s = "(1+(2*3)+((8)/4))+1"
 #
@@ -1463,3 +1462,35 @@
 #
 #
 # print(reverseWords(s))
+
+
+
+
+#2645
+a = 'aaaabb'
+#result -> 9 added symbols
+#abc for all symbols
+
+def addMinimum(word: str) -> int:
+    n = len(word)
+    cur = 0
+    result = 0
+
+    while cur < n:
+        count = 0
+
+        if word[cur] == 'a':
+            count += 1
+            cur += 1
+
+        if cur < n and word[cur] == 'b':
+            count += 1
+            cur += 1
+
+        if cur < n and word[cur] == 'c':
+            count += 1
+            cur += 1
+
+        result += 3 - count
+
+    return result
