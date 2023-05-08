@@ -1464,33 +1464,89 @@
 # print(reverseWords(s))
 
 
+# 2645
+# a = 'aaaabb'
+# result -> 9 added symbols
+# abc for all symbols
+
+# def addMinimum(word: str) -> int:
+#     n = len(word)
+#     cur = 0
+#     result = 0
+#
+#     while cur < n:
+#         count = 0
+#
+#         if word[cur] == 'a':
+#             count += 1
+#             cur += 1
+#
+#         if cur < n and word[cur] == 'b':
+#             count += 1
+#             cur += 1
+#
+#         if cur < n and word[cur] == 'c':
+#             count += 1
+#             cur += 1
+#
+#         result += 3 - count
+#
+#     return result
+
+# 1
+# a = list(map(int, input().split()))
+#
+# cur = -1
+# for i in a:
+#     if i <= cur:
+#         print('NO')
+#         break
+#     cur = i
+# else:
+#     print('YES')
 
 
-#2645
-a = 'aaaabb'
-#result -> 9 added symbols
-#abc for all symbols
 
-def addMinimum(word: str) -> int:
-    n = len(word)
+# 3 tink test
+
+str = 'dbaccbcdbcba' #самая короткая подстрока без повтора соседей,где есть a,b,c,d
+length = len(str)
+
+def try_three(a, n):
+    el1, el2, el3, el4 = 0, 0, 0, 0
+    l = 0
+    r = 1
+    res = -1
     cur = 0
-    result = 0
+    while r < n:  # пока правый указатель меньше длины n
+        if a[l] == 'a':
+            el1 += 1
+        elif a[l] == 'b':
+            el2 += 1
+        elif a[l] == 'c':
+            el3 += 1
+        else:
+            el4 += 1
+        while r < n and a[r] != a[l]:  # если соседние буквы не равны
+            if a[r] == 'a':
+                el1 += 1
+            elif a[r] == 'b':
+                el2 += 1
+            elif a[r] == 'c':
+                el3 += 1
+            elif a[r] == 'd':
+                el4 += 1
+            r += 1
+            l += 1
+        else:
+            if all((el1, el2, el3, el4)):  # проверка,что все 4 числа больше 0.Если да,то суммируем их
+                cur += el1 + el2 + el3 + el4
+                if res == -1 or res > cur:
+                    res = cur
+            el1, el2, el3, el4 = 0, 0, 0, 0
+        r += 1
+        l += 1
+    return res
 
-    while cur < n:
-        count = 0
 
-        if word[cur] == 'a':
-            count += 1
-            cur += 1
-
-        if cur < n and word[cur] == 'b':
-            count += 1
-            cur += 1
-
-        if cur < n and word[cur] == 'c':
-            count += 1
-            cur += 1
-
-        result += 3 - count
-
-    return result
+print(try_three(str, length))
