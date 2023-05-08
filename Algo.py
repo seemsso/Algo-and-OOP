@@ -1,4 +1,5 @@
 """ BINARY SEARCH """
+import heapq
 
 # def binary_search(list, item):
 #     low = 0
@@ -1104,6 +1105,7 @@
 
 """Stack and queue"""
 
+
 # 1614 stack
 # s = "(1+(2*3)+((8)/4))+1"
 #
@@ -1506,11 +1508,10 @@
 #     print('YES')
 
 
-
 # 3 tink test
 
-str = 'dbaccbcdbcba' #самая короткая подстрока без повтора соседей,где есть a,b,c,d
-length = len(str)
+# str = 'dbaccbcdbcba' #самая короткая подстрока без повтора соседей,где есть a,b,c,d
+# length = len(str)
 
 def try_three(a, n):
     el1, el2, el3, el4 = 0, 0, 0, 0
@@ -1549,4 +1550,25 @@ def try_three(a, n):
     return res
 
 
-print(try_three(str, length))
+# 1046
+
+from heapq import heappop, heappush, heapify
+
+stones = [2, 7, 4, 1, 8, 1]
+
+
+def last_in_heap(stones):
+    negative = [el * -1 for el in stones]
+    heapq.heapify(negative)
+
+    while len(negative) >= 2:
+        first = heapq.heappop(negative)
+        second = heapq.heappop(negative)
+        diff = first - second
+        if diff < 0:
+            heapq.heappush(negative, diff)
+    if negative:
+        return negative[0] * -1
+    return 0
+
+print(last_in_heap(stones))
