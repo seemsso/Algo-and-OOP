@@ -1596,6 +1596,16 @@ class LinkedList:
     def __str__(self):
         return str(self.head)
 
+    def length(self):  # O(n)
+        counter = 0
+        first = self.head
+        cur = self.head
+        while cur:
+            counter += 1
+            cur = cur.next
+        self.head = first
+        return counter
+
 
 if __name__ == '__main__':
     linked_list = LinkedList()
