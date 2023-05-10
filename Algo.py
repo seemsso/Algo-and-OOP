@@ -1552,9 +1552,10 @@ def try_three(a, n):
 
 # 1046
 
-from heapq import heappop, heappush, heapify
+# from heapq import heappop, heappush, heapify
 
-stones = [2, 7, 4, 1, 8, 1]
+
+# stones = [2, 7, 4, 1, 8, 1]
 
 
 def last_in_heap(stones):
@@ -1571,4 +1572,38 @@ def last_in_heap(stones):
         return negative[0] * -1
     return 0
 
-print(last_in_heap(stones))
+
+# print(last_in_heap(stones))
+
+
+""" Linked List """
+
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+    def __str__(self):
+        return f"[{self.val}]->{self.next}"
+
+
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+
+    def __str__(self):
+        return str(self.head)
+
+
+if __name__ == '__main__':
+    linked_list = LinkedList()
+    temp = Node(1)
+    linked_list.head = temp
+
+    for i in range(2, 5):
+        temp.next = Node(i)
+        temp = temp.next
+
+    print(linked_list)
