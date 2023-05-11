@@ -1607,13 +1607,41 @@ class LinkedList:
         return counter
 
 
-if __name__ == '__main__':
-    linked_list = LinkedList()
-    temp = Node(1)
-    linked_list.head = temp
+# if __name__ == '__main__':
+#     linked_list = LinkedList()
+#     temp = Node(1)
+#     linked_list.head = temp
+#
+#     for i in range(2, 5):
+#         temp.next = Node(i)
+#         temp = temp.next
 
-    for i in range(2, 5):
-        temp.next = Node(i)
-        temp = temp.next
 
-    print(linked_list)
+# print(linked_list)
+
+# 2000
+# reverse prefix
+
+def reversePrefix(word: str, ch: str) -> str:
+    if len(word) == 1:
+        return word
+    lst = []
+    pnt2 = -1
+    for i in range(len(word)):
+        lst.append(word[i])
+        if pnt2 == -1 and word[i] == ch:
+            pnt2 = i
+    if pnt2 == -1:
+        return ''.join(lst)
+    pnt = 0
+    while pnt < pnt2:
+        lst[pnt], lst[pnt2] = lst[pnt2], lst[pnt]
+        pnt += 1
+        pnt2 -= 1
+    return ''.join(lst)
+
+
+word = "a"
+ch = "d"
+
+print(reversePrefix(word, ch))
