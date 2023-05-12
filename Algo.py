@@ -1641,7 +1641,45 @@ def reversePrefix(word: str, ch: str) -> str:
     return ''.join(lst)
 
 
-word = "a"
-ch = "d"
+# word = "a"
+# ch = "d"
 
-print(reversePrefix(word, ch))
+# print(reversePrefix(word, ch))
+
+
+""" Prefix sum """
+
+nums = [5, 3, 8, 1, 4, 6]
+prefix = [0]
+for i in range(len(nums)):
+    prefix.append(prefix[-1] + nums[i])
+
+# print(prefix)
+
+
+""" 125 """
+
+
+def isPalindrome(s: str) -> bool:
+    n = len(s)
+    if n == 1:
+        return True
+    pnt = 0
+    pnt2 = n - 1
+    while pnt < pnt2:
+        while not s[pnt].isalpha():
+            pnt += 1
+        while not s[pnt2].isalpha():
+            pnt2 -= 1
+        if pnt >= pnt2:
+            break
+        if s[pnt].lower() != s[pnt2].lower():
+            return False
+        pnt += 1
+        pnt2 -= 1
+    return True
+
+
+s = "A man, a plan, a canal: Panama"
+
+print(isPalindrome(s))
