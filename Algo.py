@@ -1,5 +1,5 @@
 """ BINARY SEARCH """
-import heapq
+# import heapq
 
 # def binary_search(list, item):
 #     low = 0
@@ -417,7 +417,8 @@ import heapq
 # a = "G()(al)"
 
 
-# RLE
+""" RLE """
+
 # a = 'AAABBBCCDEFGHZZAAAXXKK'
 # output = 'A3B3C2DEFGHZ2A3X2'
 #
@@ -442,7 +443,8 @@ import heapq
 #
 # print(write_score(a))
 
-# Leetcode 1221
+""" 1221 """
+
 # input -  'RLLLLRRRRL'
 # output - 3
 
@@ -484,7 +486,7 @@ import heapq
 # print(twoSum(a, 5))
 
 
-# 912 leetcode
+""" 912 """
 
 
 # class Solution:
@@ -520,7 +522,8 @@ import heapq
 #         final = recursion(nums)
 #         return final
 
-# itmo 15
+""" itmo 15 """
+
 # a = [17, 2, 9, 5, 3, 1, 10]
 #
 #
@@ -537,6 +540,7 @@ import heapq
 
 
 """2160"""
+
 # my_list = 1549
 # def minimumSum(num):
 #     lst = sorted(map(int, list(str(my_list))))
@@ -581,7 +585,8 @@ import heapq
 #     return " ".join(ans)
 
 
-# 1464
+""" 1464 """
+
 # nums = [3, 4, 5, 2]
 
 
@@ -665,7 +670,8 @@ import heapq
 # print(kWeakestRows(mat, k))
 
 
-# 1
+""" 1 """
+
 # nums = [3, 2, 4, 1, 7, 10, 5], target = 6
 # output -> [1, 2] - arr with index values for sum in target
 
@@ -683,7 +689,8 @@ import heapq
 # print(twoSum(nums, target))
 
 
-# 1512 Number of Good Pairs
+""" 1512 Number of Good Pairs """
+
 # in [1,2,3,1,1,3]
 # out 4
 
@@ -706,7 +713,8 @@ import heapq
 # print(numIdenticalPairs(nums))
 
 
-# 20 leetcode
+""" 20 """
+
 # def isValid(str):
 #     stack = []
 #     dct = {
@@ -767,7 +775,7 @@ import heapq
 # print(check_nums(num1, num2))
 
 
-# 2367 leetcode
+""" 2367 """
 
 # nums = [0, 1, 4, 6, 7, 10]
 # diff = 3
@@ -785,7 +793,8 @@ import heapq
 #     return res
 
 
-# 2006
+""" 2006 """
+
 # nums = [3,2,1,5,4,2]
 # k = 2
 #
@@ -820,7 +829,8 @@ import heapq
 # print(countKDifference2(nums, k))
 
 
-# 561
+""" 561 """
+
 # nums1 = [1,4,3,2]
 # #out = 4 min(1, 2) + min(3, 4)
 #
@@ -843,7 +853,8 @@ import heapq
 # print(arrayPairSum(nums2))
 
 
-# 1684
+""" 1684 """
+
 # allowed = "ab"
 # words = ["ad", "bd", "aaab", "baa", "badab"]
 #
@@ -877,12 +888,15 @@ import heapq
 # print(countConsistentStrings2(allowed, words))
 
 
-# BINARY SEACRH
+""" BINARY SEACRH """
+
 # a = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 # target = 3
 #
 # #bug theme
-# #2089
+
+""" #2089 """
+
 # def targetIndices(nums, target):
 #     nums.sort()
 #     l = -1
@@ -910,7 +924,8 @@ import heapq
 # print(targetIndices(a, target))
 
 
-# 1351
+""" 1351 """
+
 # grid = [[3,-1,-3,-3,-3],[2,2,3,3,-3],[1,-2,-3,-3,-3],[0,-3,-3,-3,-3]]
 #
 # def countNegatives(grid) -> int:
@@ -980,7 +995,8 @@ import heapq
 # print(isPalindrome(a))
 
 
-"""2529"""
+""" 2529 """
+
 # check left positive idx
 # check left zero idx
 # check max(score positive, score negative)
@@ -1040,7 +1056,8 @@ import heapq
 # print(maximumCount(nums))
 
 
-"""349"""
+""" 349 """
+
 # nums1 = [4, 9, 5]
 # nums2 = [9, 4, 9, 8, 4]
 # #need print intersection
@@ -1106,7 +1123,7 @@ import heapq
 """Stack and queue"""
 
 
-# 1614 stack
+""" 1614 stack """
 # s = "(1+(2*3)+((8)/4))+1"
 #
 #
@@ -1154,7 +1171,7 @@ import heapq
 #             res.append(i)
 #     return ''.join(res)
 
-# 1021
+""" 1021 """
 # def removeOuterParentheses(s: str) -> str:
 #     stack = []
 #     l = 0
@@ -1179,7 +1196,7 @@ import heapq
 # print(removeOuterParentheses(s))
 
 
-# 1475
+""" 1475 """
 # prices = [8,4,6,2,3]
 # out -> [4,2,4,2,3]
 # def finalPrices(prices):
@@ -1223,7 +1240,7 @@ import heapq
 # print(set_unique(nums))
 
 
-# 2574
+""" 2574 """
 # nums = [1, 3, 10, 5, 7]
 #
 #
@@ -1253,7 +1270,7 @@ import heapq
 #
 # print(leftRigthDifference(nums))
 
-# 1047
+""" 1047 """
 
 # s = "aba"
 #
@@ -1270,7 +1287,7 @@ import heapq
 
 # print(removeDuplicates(s))
 
-# 1816
+""" 1816 """
 # s = "a rol k"
 # k = 2
 #
@@ -1319,7 +1336,7 @@ import heapq
 # print(romanToInt(s))
 
 
-# 2418
+""" 2418 """
 
 # names = ["Mary", "John", "Emma"]
 # heights = [180, 165, 170]
@@ -1394,7 +1411,8 @@ import heapq
 #             arr[i],
 
 
-# 14
+""" 14 """
+
 # strs = ["froolic", "froolic", "fraodf", "frloadsf", "frlozcv"]
 #
 #
@@ -1416,7 +1434,7 @@ import heapq
 # print(longestCommonPrefix(strs))
 
 
-# 167
+""" 167 """
 
 # numbers = [2, 7, 11, 15]
 # target = 9
@@ -1439,7 +1457,7 @@ import heapq
 # print(twoSum(numbers, target))
 
 
-# 557
+""" 557 """
 # s = "Let's take LeetCode contest"
 #
 #
@@ -1466,7 +1484,7 @@ import heapq
 # print(reverseWords(s))
 
 
-# 2645
+""" 2645 """
 # a = 'aaaabb'
 # result -> 9 added symbols
 # abc for all symbols
@@ -1550,7 +1568,7 @@ def try_three(a, n):
     return res
 
 
-# 1046
+""" 1046 """
 
 # from heapq import heappop, heappush, heapify
 
@@ -1619,7 +1637,7 @@ class LinkedList:
 
 # print(linked_list)
 
-# 2000
+""" 2000 """
 # reverse prefix
 
 def reversePrefix(word: str, ch: str) -> str:
@@ -1687,7 +1705,7 @@ def isPalindrome(s: str) -> bool:
 sl = [2, 1, 3, 4, 5]
 tar = 12
 
-
+""" Sliding window """
 def slid_window(sl, num):
     cur = 0
     l = 0
@@ -1717,5 +1735,31 @@ def slid_window2(sl, num):
             maximum += 1
     return maximum
 
+    # print(slid_window2(sl, tar))
 
-# print(slid_window2(sl, tar))
+""" 1876 """
+def countGoodSubstrings(s: str) -> int:
+    if len(s) < 3:
+        return 0
+    l = 0
+    # r = 0
+    res = 0
+    dct = {}
+    for r in range(len(s)):
+        if r-l+1 <= 3:
+            dct[s[r]] = dct.get(s[r], 0) + 1
+        while dct[s[r]] == 2:
+            dct[s[l]] -= 1
+            l += 1
+        while r-l+1 >= 3:
+            res += 1
+            dct[s[l]] -= 1
+            l += 1
+
+    return res
+
+
+# s = "xyzzaz"
+s = "aababcabc"
+
+print(countGoodSubstrings(s))
