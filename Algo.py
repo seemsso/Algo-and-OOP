@@ -1680,6 +1680,42 @@ def isPalindrome(s: str) -> bool:
     return True
 
 
-s = "A man, a plan, a canal: Panama"
+# s = "A man, a plan, a canal: Panama"
+#
+# print(isPalindrome(s))
 
-print(isPalindrome(s))
+sl = [2, 1, 3, 4, 5]
+tar = 12
+
+
+def slid_window(sl, num):
+    cur = 0
+    l = 0
+    maximum = 0
+    for r in range(len(sl)):
+        cur += sl[r]
+        while cur > num:
+            cur -= sl[l]
+            l += 1
+        maximum = max(maximum, cur)
+    return maximum
+
+
+# print(slid_window(sl, tar))
+
+
+def slid_window2(sl, num):
+    cur = 0
+    l = 0
+    maximum = 0
+    for r in range(len(sl)):
+        cur += sl[r]
+        while cur > num:
+            cur -= sl[l]
+            l += 1
+        if cur == num:
+            maximum += 1
+    return maximum
+
+
+# print(slid_window2(sl, tar))
