@@ -488,7 +488,6 @@
 
 """ 912 """
 
-
 # class Solution:
 #     def sortArray(self, nums):
 #         def merge_res(a, b):
@@ -1122,7 +1121,6 @@
 
 """Stack and queue"""
 
-
 """ 1614 stack """
 # s = "(1+(2*3)+((8)/4))+1"
 #
@@ -1485,6 +1483,8 @@
 
 
 """ 2645 """
+
+
 # a = 'aaaabb'
 # result -> 9 added symbols
 # abc for all symbols
@@ -1575,6 +1575,8 @@ def try_three(a, n):
 
 # stones = [2, 7, 4, 1, 8, 1]
 
+import heapq
+
 
 def last_in_heap(stones):
     negative = [el * -1 for el in stones]
@@ -1638,6 +1640,8 @@ class LinkedList:
 # print(linked_list)
 
 """ 2000 """
+
+
 # reverse prefix
 
 def reversePrefix(word: str, ch: str) -> str:
@@ -1706,6 +1710,8 @@ sl = [2, 1, 3, 4, 5]
 tar = 12
 
 """ Sliding window """
+
+
 def slid_window(sl, num):
     cur = 0
     l = 0
@@ -1737,7 +1743,10 @@ def slid_window2(sl, num):
 
     # print(slid_window2(sl, tar))
 
+
 """ 1876 """
+
+
 def countGoodSubstrings(s: str) -> int:
     if len(s) < 3:
         return 0
@@ -1746,12 +1755,12 @@ def countGoodSubstrings(s: str) -> int:
     res = 0
     dct = {}
     for r in range(len(s)):
-        if r-l+1 <= 3:
+        if r - l + 1 <= 3:
             dct[s[r]] = dct.get(s[r], 0) + 1
         while dct[s[r]] == 2:
             dct[s[l]] -= 1
             l += 1
-        while r-l+1 >= 3:
+        while r - l + 1 >= 3:
             res += 1
             dct[s[l]] -= 1
             l += 1
