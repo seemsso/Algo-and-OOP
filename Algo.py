@@ -1769,6 +1769,40 @@ def countGoodSubstrings(s: str) -> int:
 
 
 # s = "xyzzaz"
-s = "aababcabc"
+# s = "aababcabc"
 
-print(countGoodSubstrings(s))
+# print(countGoodSubstrings(s))
+
+
+""" 2 """
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        num1, num2 = 0, 0
+        pw = 0
+        while l1:
+            num1 += (l1.val * 10 ** pw)
+            pw += 1
+            l1 = l1.next
+        pw = 0
+        while l2:
+            num2 += (l2.val * 10 ** pw)
+            pw += 1
+            l2 = l2.next
+        res = num1 + num2
+        start = ListNode(res % 10)
+        res //= 10
+        check = start
+        while res:
+            cur = res % 10
+            check.next = ListNode(cur)
+            res //= 10
+            check = check.next
+        return start
