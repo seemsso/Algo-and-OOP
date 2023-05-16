@@ -1808,3 +1808,25 @@ class Solution:
         return start
 
 
+""" 283 """
+# Input: nums = [0,1,0,3,12]
+# Output: [1,3,12,0,0]
+
+def moveZeroes(nums) -> None:
+    n = len(nums)
+    if n == 1:
+        return n
+    pnt1 = 0
+    pnt2 = 0
+    while pnt2 < n and pnt1 <= pnt2:
+        if not nums[pnt1]:
+            while pnt2 < n - 1 and not nums[pnt2]:
+                pnt2 += 1
+            nums[pnt1], nums[pnt2] = nums[pnt2], nums[pnt1]
+            pnt1 += 1
+        else:
+            pnt1 += 1
+            pnt2 += 1
+
+
+""" Dynamic programming """
