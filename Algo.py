@@ -1830,3 +1830,22 @@ def moveZeroes(nums) -> None:
 
 
 """ Dynamic programming """
+
+
+""" 70 """
+
+k = 2
+n = 4
+def climbStairs(n: int) -> int:
+    dp = [0] * (n + 1)
+    dp[0] = dp[1] = 1
+    s = 2
+    k = 2
+    for i in range(2, n + 1):
+        dp[i] = s
+        s += dp[i]
+        if i + 1 - k >= 1:
+            s -= dp[i - k]
+    return dp[n]
+
+# print(climbStairs(n))
