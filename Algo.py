@@ -1870,4 +1870,23 @@ def minCostClimbingStairs(cost) -> int:
 
 cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
 
-print(minCostClimbingStairs(cost))
+# print(minCostClimbingStairs(cost))
+
+""" 198 """
+nums = [2, 7, 9, 3, 1]
+
+
+def rob(nums) -> int:
+    n = len(nums)
+    if n <= 2:
+        return max(nums)
+    cur = 0
+    prev = 0
+    for i in range(len(nums)):
+        temp = cur
+        cur = max(nums[i] + prev, cur)
+        prev = temp
+    return cur
+
+
+# print(rob(nums))
