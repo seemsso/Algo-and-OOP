@@ -1809,6 +1809,8 @@ class Solution:
 
 
 """ 283 """
+
+
 # Input: nums = [0,1,0,3,12]
 # Output: [1,3,12,0,0]
 
@@ -1831,11 +1833,12 @@ def moveZeroes(nums) -> None:
 
 """ Dynamic programming """
 
-
 """ 70 """
 
 k = 2
 n = 4
+
+
 def climbStairs(n: int) -> int:
     dp = [0] * (n + 1)
     dp[0] = dp[1] = 1
@@ -1848,4 +1851,23 @@ def climbStairs(n: int) -> int:
             s -= dp[i - k]
     return dp[n]
 
+
 # print(climbStairs(n))
+
+
+""" 746 """
+
+
+def minCostClimbingStairs(cost) -> int:
+    prev = cost[0]
+    cur = cost[1]
+    for i in range(2, len(cost)):
+        nxt = cost[i] + min(prev, cur)
+        prev = cur
+        cur = nxt
+    return min(prev, cur)
+
+
+cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+
+print(minCostClimbingStairs(cost))
