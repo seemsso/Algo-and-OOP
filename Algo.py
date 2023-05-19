@@ -1890,3 +1890,49 @@ def rob(nums) -> int:
 
 
 # print(rob(nums))
+
+
+""" 88 """
+
+nums1 = [1, 2, 3, 0, 0, 0]
+m = 3
+nums2 = [2, 5, 6]
+n = 3
+
+
+def merge(nums1, m: int, nums2, n: int):
+    pnt1 = 0
+    pnt2 = 0
+    if not m or not n:
+        pass
+    if not nums1 or not nums2:
+        pass
+    while pnt1 < m and pnt2 < n:
+        if nums1[pnt1] <= nums2[pnt2]:
+            pass
+        else:
+            pass
+    return nums1
+
+
+# print(merge(nums1, m, nums2, n))
+
+
+a = 7
+allowed = [True, True, False, True, True, True, True, True]
+
+
+def count_traj(a, allowed):
+    dp = [0] * (a + 1)
+    dp[0] = 0
+    dp[1] = 1
+    dp[2] = int(allowed[2])
+    for i in range(3, a + 1):
+        if allowed[i]:
+            dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]
+        else:
+            dp[i] = 0
+    return dp[a]
+
+
+# print(count_traj(a, allowed))
