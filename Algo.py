@@ -1939,6 +1939,8 @@ def count_traj(a, allowed):
 
 
 """ 392 """
+
+
 # Input: s = "abc", t = "ahbgdc"
 # Output: true
 
@@ -1959,3 +1961,26 @@ def isSubsequence(s: str, t: str) -> bool:
             p1 += 1
         p2 += 1
     return p1 == len(s)
+
+
+""" 88 """
+
+
+# Input: nums1 = [1,2,3,0,0,0]
+# m = 3
+# nums2 = [2,5,6]
+# n = 3
+# Output: [1,2,2,3,5,6]
+def merge(nums1, m: int, nums2, n: int) -> None:
+    pnt1 = m - 1
+    pnt2 = n - 1
+    tail = len(nums1) - 1
+    while pnt2 >= 0:
+        if pnt1 >= 0 and nums1[pnt1] > nums2[pnt2]:
+            nums1[tail] = nums1[pnt1]
+            tail -= 1
+            pnt1 -= 1
+        else:
+            nums1[tail] = nums2[pnt2]
+            tail -= 1
+            pnt2 -= 1
