@@ -1984,3 +1984,27 @@ def merge(nums1, m: int, nums2, n: int) -> None:
             nums1[tail] = nums2[pnt2]
             tail -= 1
             pnt2 -= 1
+
+
+""" Trees(DFS/BFS) """
+
+""" 1379 """
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class SolutionTree:
+    def getTargetCopy(self, original, cloned, target):
+        stack = [(original, cloned)]
+        while stack:
+            o, c = stack.pop()
+            if o == target:
+                return c
+            if o:
+                stack.append((o.right, c.right))
+                stack.append((o.left, c.left))
